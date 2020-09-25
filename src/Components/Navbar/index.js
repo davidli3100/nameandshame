@@ -1,24 +1,46 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/core";
+import { Box, Button, Text } from "@chakra-ui/core";
+import { Link, useLocation } from "react-router-dom";
+
+const NavItem = ({ title, path }) => {
+  const isActive = useLocation().pathname === path;
+
+  return (
+    <Text
+      fontWeight="600"
+      marginRight="24px"
+      color={isActive ? "blueGray.900" : "blueGray.700"}
+    >
+      <Link to={path}>{title}</Link>
+    </Text>
+  );
+};
 
 const Navbar = () => (
-  <Box display="flex" flexDirection="row" width="100%" px="80px" height="60px" alignItems="center">
-    <Text fontWeight="bold" color="blue.900" fontSize={["20px", null, null, "24px"]}>
+  <Box
+    display="flex"
+    flexDirection="row"
+    width="100%"
+    px="80px"
+    height="72px"
+    alignItems="center"
+  >
+    <Text
+      fontWeight="black"
+      color="blue.900"
+      fontSize={["20px", null, null, "24px"]}
+    >
       NameandShame
     </Text>
-    <Box display="flex" flexDirection="row" marginLeft="64px" marginTop="3px">
-      <Text fontWeight="600" marginRight="24px">
-        Browse
-      </Text>
-      <Text marginRight="24px" fontWeight="600">
-        About
-      </Text>
-      <Text fontWeight="600">
-        Careers
-      </Text>
+    <Box display="flex" flexDirection="row" marginLeft="64px">
+      <NavItem title="Browse" path="/" />
+      <NavItem title="About" path="/about" />
+      <NavItem title="Careers" path="/careers" />
     </Box>
-    
+    <Button marginLeft="auto" variantColor="primary" borderRadius="6px" px="16px">
+      Submit a Report
+    </Button>
   </Box>
 );
 
-export default Navbar;
+export default Navbar
