@@ -40,13 +40,13 @@ const CompanyCard = ({ id, name, imageURL, numReports, score }) => (
       {name}
     </Text>
     <Box display="flex" flexDirection="row" mt="6px" fontWeight="600">
-      <Tooltip label="Number of reports" placement="bottom">
+      <Tooltip fontWeight="600" label="Number of reports" placement="bottom">
         <Box color="blueGray.600" mr="32px" display="flex" flexDirection="row">
           <Icon mt="2px" mr="8px" size="20px" name="reports" />
           <Text>{numReports}</Text>
         </Box>
       </Tooltip>
-      <Tooltip label="Toxicity Score (0-10)" placement="bottom">
+      <Tooltip fontWeight="600" label="Toxicity Score (0-10)" placement="bottom">
         <Box color="blueGray.600" display="flex" flexDirection="row">
           <Icon mt="2px" size="20px" mr="8px" name="score" />
           <Text>{score}</Text>
