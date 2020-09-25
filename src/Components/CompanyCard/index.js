@@ -3,19 +3,19 @@ import { Box, Icon, Image, Text, Button, Tooltip } from "@chakra-ui/core";
 
 /**
  * Handler to redirect the user when clicking on the company card's buttons
- * @param {"report" || "view"} type type of action taken
+ * @param {"report" | "view"} type type of action taken
  * @param {string} id ID of the company/employer
  */
 const handleClick = (type, id) => {
   switch (type) {
     case "report":
       window.location.href = `/report/${id}`;
-      break
+      break;
     case "view":
       window.location.href = `/employer/${id}`;
-      break
+      break;
     default:
-      break
+      break;
   }
 };
 
@@ -54,10 +54,19 @@ const CompanyCard = ({ id, name, imageURL, numReports, score }) => (
       </Tooltip>
     </Box>
     <Box mt="24px">
-      <Button variantColor="primary" width="calc(50% - 8px)" mr="16px">
+      <Button
+        onClick={() => handleClick("report", id)}
+        variantColor="primary"
+        width="calc(50% - 8px)"
+        mr="16px"
+      >
         Report
       </Button>
-      <Button color="blueGray.600" width="calc(50% - 8px)">
+      <Button
+        onClick={() => handleClick("view", id)}
+        color="blueGray.600"
+        width="calc(50% - 8px)"
+      >
         View
       </Button>
     </Box>
