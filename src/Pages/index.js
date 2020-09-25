@@ -6,7 +6,7 @@ import Hero from "../Components/Hero";
 const Index = () => (
   <Fragment>
     <Hero />
-    <Box px="80px">
+    <Box px="80px" py="64px">
       <Box
         display="grid"
         gridTemplateColumns="repeat(auto-fit, 320px)"
