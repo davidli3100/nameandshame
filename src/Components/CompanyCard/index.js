@@ -26,7 +26,7 @@ const CompanyCard = ({ id, name, imageURL, numReports, score }) => (
     px="20px"
     py="20px"
     borderColor="blueGray.100"
-    borderWidth="2px"
+    borderWidth="1px"
     borderRadius="8px"
   >
     <Image
