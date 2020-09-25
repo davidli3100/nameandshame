@@ -37,10 +37,15 @@ const Navbar = () => (
       <NavItem title="About" path="/about" />
       <NavItem title="Careers" path="/careers" />
     </Box>
-    <Button marginLeft="auto" variantColor="primary" borderRadius="6px" px="16px">
+    <Button
+      marginLeft="auto"
+      variantColor="primary"
+      borderRadius="6px"
+      px="16px"
+    >
       Submit a Report
     </Button>
   </Box>
 );
 
-export default Navbar
+export default Navbar;
