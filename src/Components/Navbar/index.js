@@ -3,6 +3,7 @@ import { Box, Button, Text } from "@chakra-ui/core";
 import { Link, useLocation } from "react-router-dom";
 
 const NavItem = ({ title, path }) => {
+  // uses inline equality op to match pathnames to active path
   const isActive = useLocation().pathname === path;
 
   return (
