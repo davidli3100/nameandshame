@@ -59,6 +59,7 @@ const CompanyCard = ({ id, name, imageURL, numReports, score }) => (
         variantColor="primary"
         width="calc(50% - 8px)"
         mr="16px"
+        borderRadius="6px"
       >
         Report
       </Button>
@@ -66,6 +67,7 @@ const CompanyCard = ({ id, name, imageURL, numReports, score }) => (
         onClick={() => handleClick("view", id)}
         color="blueGray.600"
         width="calc(50% - 8px)"
+        borderRadius="6px"
       >
         View
       </Button>
