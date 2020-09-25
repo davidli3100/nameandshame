@@ -1,6 +1,24 @@
 import React from "react";
 import { Box, Icon, Image, Text, Button, Tooltip } from "@chakra-ui/core";
 
+/**
+ * Handler to redirect the user when clicking on the company card's buttons
+ * @param {"report" || "view"} type type of action taken
+ * @param {string} id ID of the company/employer
+ */
+const handleClick = (type, id) => {
+  switch (type) {
+    case "report":
+      window.location.href = `/report/${id}`;
+      break
+    case "view":
+      window.location.href = `/employer/${id}`;
+      break
+    default:
+      break
+  }
+};
+
 const CompanyCard = ({ id, name, imageURL, numReports, score }) => (
   <Box
     width="100%"
