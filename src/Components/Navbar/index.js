@@ -24,13 +24,16 @@ const Navbar = () => (
     px="80px"
     height="72px"
     alignItems="center"
+    boxShadow="0px 1.25px 0px #F3F4F4"
   >
     <Text
       fontWeight="black"
       color="blue.900"
       fontSize={["20px", null, null, "24px"]}
     >
-      NameandShame
+      <Link to="/">
+        NameandShame
+      </Link>
     </Text>
     <Box display="flex" flexDirection="row" marginLeft="64px">
       <NavItem title="Browse" path="/" />
