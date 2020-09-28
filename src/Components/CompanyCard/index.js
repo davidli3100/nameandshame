@@ -15,66 +15,78 @@ const handleClick = (type, id) => {
     case "view":
       return `/employer/${id}`;
     default:
-      return `/`
+      return `/`;
   }
 };
 
-const CompanyCard = ({ id, name, imageURL, numReports, score }) => (
-  <Box
-    width="100%"
-    maxWidth="320px"
-    px="20px"
-    py="20px"
-    borderColor="blueGray.100"
-    borderWidth="1px"
-    borderRadius="8px"
-  >
-    <Image
-      objectFit="cover"
-      height="75px"
-      width="75px"
+const CompanyCard = (props) => {
+  const { objectID: id, name, imageURL, numReports, score } = props.hit;
+  return (
+    <Box
+      width="100%"
+      maxWidth="320px"
+      px="20px"
+      py="20px"
+      borderColor="blueGray.100"
+      borderWidth="1px"
       borderRadius="8px"
-      src={imageURL}
-    />
-    <Text pt="12px" fontSize="18px" color="blueGray.900" fontWeight="700">
-      {name}
-    </Text>
-    <Box display="flex" flexDirection="row" mt="6px" fontWeight="600">
-      <Tooltip fontWeight="600" label="Number of reports" placement="bottom">
-        <Box color="blueGray.600" mr="32px" display="flex" flexDirection="row">
-          <Icon mt="2px" mr="8px" size="20px" name="reports" />
-          <Text>{numReports}</Text>
-        </Box>
-      </Tooltip>
-      <Tooltip fontWeight="600" label="Toxicity Score (0-10)" placement="bottom">
-        <Box color="blueGray.600" display="flex" flexDirection="row">
-          <Icon mt="2px" size="20px" mr="8px" name="score" />
-          <Text>{score}</Text>
-        </Box>
-      </Tooltip>
+    >
+      <Image
+        objectFit="cover"
+        height="75px"
+        width="75px"
+        borderRadius="8px"
+        src={imageURL}
+      />
+      <Text pt="12px" fontSize="18px" color="blueGray.900" fontWeight="700">
+        {name}
+      </Text>
+      <Box display="flex" flexDirection="row" mt="6px" fontWeight="600">
+        <Tooltip fontWeight="600" label="Number of reports" placement="bottom">
+          <Box
+            color="blueGray.600"
+            mr="32px"
+            display="flex"
+            flexDirection="row"
+          >
+            <Icon mt="2px" mr="8px" size="20px" name="reports" />
+            <Text>{numReports}</Text>
+          </Box>
+        </Tooltip>
+        <Tooltip
+          fontWeight="600"
+          label="Toxicity Score (0-10)"
+          placement="bottom"
+        >
+          <Box color="blueGray.600" display="flex" flexDirection="row">
+            <Icon mt="2px" size="20px" mr="8px" name="score" />
+            <Text>{score}</Text>
+          </Box>
+        </Tooltip>
+      </Box>
+      <Box mt="24px">
+        <Button
+          as={Link}
+          to={handleClick("report", id)}
+          variantColor="primary"
+          width="calc(50% - 8px)"
+          mr="16px"
+          borderRadius="6px"
+        >
+          Report
+        </Button>
+        <Button
+          as={Link}
+          to={handleClick("view", id)}
+          color="blueGray.600"
+          width="calc(50% - 8px)"
+          borderRadius="6px"
+        >
+          View
+        </Button>
+      </Box>
     </Box>
-    <Box mt="24px">
-      <Button
-        as={Link}
-        to={handleClick("report", id)}
-        variantColor="primary"
-        width="calc(50% - 8px)"
-        mr="16px"
-        borderRadius="6px"
-      >
-        Report
-      </Button>
-      <Button
-        as={Link}
-        to={handleClick("view", id)}
-        color="blueGray.600"
-        width="calc(50% - 8px)"
-        borderRadius="6px"
-      >
-        View
-      </Button>
-    </Box>
-  </Box>
-);
+  );
+};
 
 export default CompanyCard;
