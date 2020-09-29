@@ -33,3 +33,29 @@ Search widget overrides
   background-position: 96% 53% !important;
   padding: .3rem 2rem .3rem .5rem;
 }
+
+.ais-SearchBox-submit {
+  left: .7rem;
+  height: 14px;
+  width: 14px;
+}
+
+.ais-SearchBox-input {
+  padding: .3rem 1.9rem;
+}
+
+.ais-SearchBox-submitIcon {
+  height: 14px;
+  width: 14px;
+}
+
+.ais-SearchBox-reset {
+  height: 8px;
+  width: 8px;
+  right: .8rem;  
+}
+
+.ais-SearchBox-resetIcon {
+  height: 10px;
+  width: 10px;
+}
