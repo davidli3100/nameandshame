@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Rheostat from 'rheostat';
 import { connectRange } from 'react-instantsearch-dom';
+import { Text } from '@chakra-ui/core';
 
 class RangeSlider extends Component {
   state = {
@@ -57,13 +58,13 @@ class RangeSlider extends Component {
           className="rheostat-marker"
           style={{ left: 0 }}
         >
-          <div className="rheostat-value">{this.state.min}</div>
+          <div className="rheostat-value"><Text fontSize=".9rem">{this.state.min}</Text></div>
         </div>
         <div
           className="rheostat-marker"
           style={{ right: 0 }}
         >
-          <div className="rheostat-value">{this.state.max}{this.state.max === 10000 && "+"}</div>
+          <div className="rheostat-value"><Text fontSize=".9rem">{this.state.max}{this.state.max === 10000 && "+"}</Text></div>
         </div>
       </Rheostat>
     );

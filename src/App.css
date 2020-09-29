@@ -5,7 +5,7 @@
 }
 
 .rheostat {
-  margin: 32px 8px !important;
+  margin: 32px 6px 32px 6px !important;
 }
 
 .rheostat-handle {
@@ -28,6 +28,12 @@
 /**
 Search widget overrides
 **/
+.ais-Panel-header {
+  text-transform: capitalize;
+  font-size: 1rem;
+  color: #102A43;
+}
+
 .ais-SortBy-select {
   width: 100%;
   background-position: 96% 53% !important;
@@ -35,27 +41,18 @@ Search widget overrides
 }
 
 .ais-SearchBox-submit {
-  left: .7rem;
-  height: 14px;
-  width: 14px;
+  left: .6rem;
+  height: 16px;
+  width: 16px;
 }
 
 .ais-SearchBox-input {
-  padding: .3rem 1.9rem;
-}
-
-.ais-SearchBox-submitIcon {
-  height: 14px;
-  width: 14px;
+  padding: .3rem 2.1rem;
+  color:#829AB1;
 }
 
 .ais-SearchBox-reset {
-  height: 8px;
-  width: 8px;
-  right: .8rem;  
-}
-
-.ais-SearchBox-resetIcon {
-  height: 10px;
-  width: 10px;
+  height: 16px;
+  width: 16px;
+  right: .5rem;  
 }
