@@ -1,0 +1,35 @@
+.ais-RangeSlider .rheostat-progress {
+  background-color: #0084F4;
+  border-radius: 2px;
+  height: 6px;
+}
+
+.rheostat {
+  margin: 32px 8px !important;
+}
+
+.rheostat-handle {
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0.5px 1.2px 3.2px 0.5px, rgba(0, 0, 0, 0.06) 0.5px 1.2px 2.2px 0.5px;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease 0s;
+  border: none !important;
+}
+
+.rheostat-background {
+  border: none !important;
+  background-color: rgb(226, 232, 240) !important;
+}
+
+/**
+Search widget overrides
+**/
+.ais-SortBy-select {
+  width: 100%;
+  background-position: 96% 53% !important;
+  padding: .3rem 2rem .3rem .5rem;
+}

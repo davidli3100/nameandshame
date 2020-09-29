@@ -4,6 +4,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, connectHits, SortBy, RefinementList, NumericMenu, Panel } from 'react-instantsearch-dom';
 import CompanyCard from "../Components/CompanyCard";
 import Hero from "../Components/Hero";
+import CustomRangeSlider from "../Components/RangeSlider";
 
 const searchClient = algoliasearch(
   'FEQR412FHW',
@@ -26,30 +27,29 @@ const Index = () => (
         Browse Employers
       </Text>
       <InstantSearch indexName="Employers" searchClient={searchClient}>
-        <Box display="grid" gridTemplateColumns="300px 1fr" gridColumnGap="40px">
+        <Box display="grid" gridTemplateColumns="270px 1fr" gridColumnGap="60px">
           <Box>
             <SearchBox />
-            <SortBy
-              defaultRefinement="Employers"
-              items={[
-                { value: 'Employers', label: "Default" },
-                { value: "Employers_name_asc", label: "Name (A-Z)" },
-                { value: "Employers_name_desc", label: "Name (Z-A)" },
-                { value: "Employers_score_asc", label: "Score (asc)" },
-                { value: "Employers_score_desc", label: "Score (desc)" }
-              ]}
-            />
+            <Box mt="24px" mb="32px">
+              <Panel header="Sort">
+                <Box mt="16px">
+                  <SortBy
+                    defaultRefinement="Employers"
+                    items={[
+                      { value: 'Employers', label: "Default" },
+                      { value: "Employers_name_asc", label: "Name (A-Z)" },
+                      { value: "Employers_name_desc", label: "Name (Z-A)" },
+                      { value: "Employers_score_asc", label: "Score (asc)" },
+                      { value: "Employers_score_desc", label: "Score (desc)" },
+                      { value: "Employers_numReports_asc", label: "Reports (asc)" },
+                      { value: "Employers_numReports_desc", label: "Reports (desc)" }
+                    ]}
+                  />
+                </Box>
+              </Panel>
+            </Box>
             <Panel header="Employees">
-              <NumericMenu
-                attribute="numEmployees"
-                items={[
-                  { label : '1 - 10', start:1, end: 10 },
-                  { label: '10 - 100', start: 10, end: 100 },
-                  { label: '100 - 1000', start: 100, end: 1000 },
-                  { label: '1000 - 5000', start: 1000, end: 5000 },
-                  { label: '10000+', start: 10000 }
-                ]}
-              />
+              <CustomRangeSlider attribute="numEmployees" min={1} max={10000} />
             </Panel>
           </Box>
           <Box

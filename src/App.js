@@ -5,6 +5,7 @@ import theme from './theme'
 import './static/fonts/fonts.css'
 import Navbar from './Components/Navbar'
 import Index from './Pages'
+import './App.css';
 
 function App() {
   return (
