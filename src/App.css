@@ -41,18 +41,23 @@ Search widget overrides
 }
 
 .ais-SearchBox-submit {
-  left: .6rem;
+  left: 0rem;
+  margin-bottom: 2px;
   height: 16px;
   width: 16px;
 }
 
 .ais-SearchBox-input {
-  padding: .3rem 2.1rem;
+  padding: .3rem 1.6rem;
+  margin-top: 2px;
   color:#829AB1;
+  border: none;
+  border-bottom: 1.5px solid #9FB3C8;
+  border-radius: 0px;
 }
 
 .ais-SearchBox-reset {
   height: 16px;
   width: 16px;
-  right: .5rem;  
+  right: .2rem;  
 }

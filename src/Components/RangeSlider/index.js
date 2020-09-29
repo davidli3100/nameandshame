@@ -25,10 +25,17 @@ class RangeSlider extends Component {
   onChange = ({ values: [min, max] }) => {
     const { currentRefinement, refine } = this.props;
     if (currentRefinement.min !== min || currentRefinement.max !== max) {
-      refine({
-        min,
-        max,
-      });
+      if (currentRefinement.max === 10000) {
+        refine({
+          min,
+          max: 1000000000
+        })
+      } else {
+        refine({
+          min,
+          max,
+        });
+      }
     }
   }
 
