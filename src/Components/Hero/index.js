@@ -12,7 +12,7 @@ const Hero = () => (
         px="10vw"
     >
         <Box>
-            <Heading fontWeight="600">
+            <Heading fontWeight="600" paddingRight="5vw">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </Heading>
         </Box>
