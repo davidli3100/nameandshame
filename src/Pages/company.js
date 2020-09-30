@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/core";
 import React from "react";
 import Banner from "../Components/Employers/Banner";
 import Stats from "../Components/Employers/Stats";
+import Reports from "../Components/Employers/Reports";
 
 const company = () => (
     <Box display="flex" flexDirection="column" justifyContent="center">
@@ -14,6 +15,7 @@ const company = () => (
             trend={84}
             mcr="Racism"
         />
+        <Reports />
     </Box>
 );
 
