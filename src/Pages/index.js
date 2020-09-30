@@ -50,7 +50,7 @@ const Index = () => (
               </Panel>
             </Box>
             <Panel header="Employees">
-              <CustomRangeSlider attribute="numEmployees" min={1} max={1000000} />
+              <CustomRangeSlider attribute="numEmployees" min={1} max={10000} />
             </Panel>
           </Box>
           <Box
