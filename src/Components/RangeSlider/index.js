@@ -6,7 +6,7 @@ import { Text } from '@chakra-ui/core';
 class RangeSlider extends Component {
   state = {
     min: this.props.min,
-    max: this.props.max,
+    max: 10000,
   }
 
   componentDidUpdate(prevProps) {
@@ -25,17 +25,10 @@ class RangeSlider extends Component {
   onChange = ({ values: [min, max] }) => {
     const { currentRefinement, refine } = this.props;
     if (currentRefinement.min !== min || currentRefinement.max !== max) {
-      if (currentRefinement.max === 10000) {
-        refine({
-          min,
-          max: 1000000000
-        })
-      } else {
-        refine({
-          min,
-          max,
-        });
-      }
+      refine({
+        min,
+        max,
+      });
     }
   }
 
