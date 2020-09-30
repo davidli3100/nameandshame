@@ -10,7 +10,7 @@ const Stats = ({ logo, name, employees, reports, RE, trend, mcr }) => (
         <Box
             display="flex"
             flexDirection="row"
-            mt="30px"
+            mt="50px"
             justifyContent="space-evenly"
             width="100%"
         >
