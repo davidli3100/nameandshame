@@ -32,9 +32,7 @@ const Navbar = () => (
       color="blue.900"
       fontSize={["20px", null, null, "24px"]}
     >
-      <Link to="/">
-        NameandShame
-      </Link>
+      <Link to="/">NameandShame</Link>
     </Text>
     <Box display="flex" flexDirection="row" marginLeft="64px">
       <NavItem title="Browse" path="/" />
@@ -42,6 +40,8 @@ const Navbar = () => (
       <NavItem title="Careers" path="/careers" />
     </Box>
     <Button
+      as={Link}
+      to="/report"
       marginLeft="auto"
       variantColor="primary"
       borderRadius="6px"
