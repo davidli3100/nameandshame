@@ -1,11 +1,11 @@
 .ais-RangeSlider .rheostat-progress {
-  background-color: #0084F4;
+  background-color: #0084f4;
   border-radius: 2px;
   height: 6px;
 }
 
 .rheostat {
-  margin: 32px 6px 32px 6px !important;
+  margin: 16px 6px 32px 6px !important;
 }
 
 .rheostat-handle {
@@ -14,7 +14,8 @@
   height: 20px;
   border-radius: 9999px;
   background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.1) 0.5px 1.2px 3.2px 0.5px, rgba(0, 0, 0, 0.06) 0.5px 1.2px 2.2px 0.5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0.5px 1.2px 3.2px 0.5px,
+    rgba(0, 0, 0, 0.06) 0.5px 1.2px 2.2px 0.5px;
   border: 1px solid transparent;
   transition: transform 0.2s ease 0s;
   border: none !important;
@@ -31,13 +32,15 @@ Search widget overrides
 .ais-Panel-header {
   text-transform: capitalize;
   font-size: 1rem;
-  color: #102A43;
+  color: #102a43;
+  /* border-bottom: 1.5px solid #9fb3c8; */
+  border: none;
 }
 
 .ais-SortBy-select {
   width: 100%;
   background-position: 96% 53% !important;
-  padding: .3rem 2rem .3rem .5rem;
+  padding: 0.3rem 2rem 0.3rem 0.5rem;
 }
 
 .ais-SearchBox-submit {
@@ -48,16 +51,16 @@ Search widget overrides
 }
 
 .ais-SearchBox-input {
-  padding: .3rem 1.6rem;
+  padding: 0.3rem 1.6rem;
   margin-top: 2px;
-  color:#829AB1;
+  color: #829ab1;
   border: none;
-  border-bottom: 1.5px solid #9FB3C8;
+  border-bottom: 1.5px solid #9fb3c8;
   border-radius: 0px;
 }
 
 .ais-SearchBox-reset {
   height: 16px;
   width: 16px;
-  right: .2rem;  
+  right: 0.2rem;
 }
