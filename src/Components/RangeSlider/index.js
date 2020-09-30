@@ -6,7 +6,7 @@ import { Text } from '@chakra-ui/core';
 class RangeSlider extends Component {
   state = {
     min: this.props.min,
-    max: 10000,
+    max: this.props.max,
   }
 
   componentDidUpdate(prevProps) {
