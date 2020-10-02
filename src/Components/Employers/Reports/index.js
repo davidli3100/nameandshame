@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid } from "@chakra-ui/core";
+import { Box } from "@chakra-ui/core";
 import Report from "../Report";
 
 const Reports = () => (
