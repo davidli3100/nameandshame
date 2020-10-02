@@ -8,11 +8,14 @@ const Stats = ({ logo, name, employees, reports, RE, trend, mcr }) => (
             {name}
         </Heading>
         <Box
-            display="flex"
-            flexDirection="row"
+            display="grid"
+            gridTemplateColumns="repeat(auto-fit, 200px)"
+            gridAutoFlow="row"
+            gridRowGap={5}
             mt="50px"
-            justifyContent="space-evenly"
+            px="50px"
             width="100%"
+            justifyContent="center"
         >
             <Box textAlign="left">
                 <Heading color="blueGray.600" size="sm" fontWeight="600">
@@ -30,6 +33,7 @@ const Stats = ({ logo, name, employees, reports, RE, trend, mcr }) => (
                     {reports}
                 </Heading>
             </Box>
+
             <Box textAlign="left">
                 <Heading color="blueGray.600" size="sm" fontWeight="600">
                     R/E
@@ -47,9 +51,11 @@ const Stats = ({ logo, name, employees, reports, RE, trend, mcr }) => (
                     fontWeight="600"
                     color={trend > 0 ? "red.500" : "blue.500"}
                 >
-                    {trend}
+                    {trend >= 0 ? "+" : "-"}
+                    {trend}%
                 </Heading>
             </Box>
+
             <Box textAlign="left">
                 <Heading color="blueGray.600" size="sm" fontWeight="600">
                     MCR
