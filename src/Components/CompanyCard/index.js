@@ -24,7 +24,6 @@ const CompanyCard = (props) => {
   return (
     <Box
       width="100%"
-      maxWidth="320px"
       px="20px"
       py="20px"
       borderColor="blueGray.100"

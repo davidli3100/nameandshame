@@ -11,6 +11,7 @@ import CompanyCard from "../Components/CompanyCard";
 import Hero from "../Components/Hero";
 import CustomRangeSlider from "../Components/RangeSlider";
 import CustomSearch from "../Components/CustomSearch";
+import { isMobile } from "../Components/MediaQueries";
 
 const searchClient = algoliasearch(
   "FEQR412FHW",
@@ -25,7 +26,7 @@ const EmployerHits = connectHits(customEmployerHits);
 const Index = () => (
   <Fragment>
     <Hero />
-    <Box px="64px" py="56px">
+    <Box px={isMobile() ? "40px" : "64px"} py="56px">
       <Text fontSize="32px" color="blueGray.900" fontWeight="bold" mb="32px">
         Browse Employers
       </Text>
@@ -34,6 +35,7 @@ const Index = () => (
           display="grid"
           gridTemplateColumns={["1fr", null, null, null, "270px 1fr"]}
           gridColumnGap="80px"
+          gridRowGap="64px"
         >
           <Box>
             <CustomSearch />
@@ -71,6 +73,7 @@ const Index = () => (
             gridColumnGap="40px"
             gridRowGap="40px"
             maxWidth="100%"
+            justifySelf={isMobile() && "center"}
           >
             <EmployerHits />
           </Box>
