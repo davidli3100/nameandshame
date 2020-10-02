@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * Helper to determine if a screen is a mobile device or not
  * @returns {boolean}

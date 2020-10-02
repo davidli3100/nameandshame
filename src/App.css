@@ -40,7 +40,8 @@ Search widget overrides
 .ais-SortBy-select {
   width: 100%;
   background-position: 96% 53% !important;
-  padding: 0.3rem 2rem 0.3rem 0.5rem;
+  padding: 0.5rem 2rem 0.5rem 0.8rem;
+  border-radius: 4px;
 }
 
 .ais-SearchBox-submit {

@@ -6,13 +6,14 @@ const Hero = () => (
   <Box
     backgroundColor="rgba(0, 132, 244, 0.05)"
     width="100%"
-    height="400px"
+    height={["300px", null, null, "400px"]}
     display="flex"
     alignItems="center"
+    justifyContent="center"
     px="10vw"
   >
     <Box>
-      <Heading fontWeight="600" paddingRight="5vw" color="blue.900">
+      <Heading size="xl" fontWeight="600" paddingRight="5vw" color="blue.900">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </Heading>
     </Box>
