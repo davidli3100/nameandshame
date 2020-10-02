@@ -22,7 +22,7 @@ const Stats = ({ logo, name, employees, reports, RE, trend, mcr }) => (
                     EMPLOYEES
                 </Heading>
                 <Heading size="sm" fontWeight="600">
-                    {employees > 10000 ? "10,000+" : employees}
+                    {employees >= 10000 ? "10,000+" : employees}
                 </Heading>
             </Box>
             <Box textAlign="left">
