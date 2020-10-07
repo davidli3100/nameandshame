@@ -24,7 +24,7 @@ const Company = () => {
       console.log(data);
     };
     fetchFirebaseData();
-  }, []);
+  }, [id]);
 
   return (
     <Box display="flex" flexDirection="column" justifyContent="center">
