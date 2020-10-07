@@ -1,23 +1,23 @@
 @font-face {
-    font-family: "Averta Std";
-    src: url("regular.otf");
-    font-weight: normal;
+  font-family: "Averta Std";
+  src: local("Averta Std"), url("./regular.otf") format("opentype");
+  font-weight: normal;
 }
 
 @font-face {
-    font-family: "Averta Std";
-    src: url("light.otf");
-    font-weight: lighter;
+  font-family: "Averta Std";
+  src: local("Averta Std"), url("./light.otf") format("opentype");
+  font-weight: lighter;
 }
 
 @font-face {
-    font-family: "Averta Std";
-    src: url("bold.otf");
-    font-weight: bold;
+  font-family: "Averta Std";
+  src: local("Averta Std"), url("./bold.otf") format("opentype");
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: "Averta Std";
-    src: url("semibold.otf");
-    font-weight: 600;
+  font-family: "Averta Std";
+  src: local("Averta Std"), url("./semibold.otf") format("opentype");
+  font-weight: 600;
 }
