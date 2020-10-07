@@ -1,22 +1,45 @@
 import { Box } from "@chakra-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import * as firebase from "firebase";
+import "firebase/firestore";
+import { useParams } from "react-router-dom";
 import Banner from "../Components/Employers/Banner";
 import Stats from "../Components/Employers/Stats";
 import Reports from "../Components/Employers/Reports";
 
-const company = () => (
-    <Box display="flex" flexDirection="column" justifyContent="center">
-        <Banner source="https://d4qwptktddc5f.cloudfront.net/gensler-cocacola-03-mainlobby.jpg" />
-        <Stats
-            logo="https://upload.wikimedia.org/wikipedia/commons/c/cb/Coca_Cola_Logo.jpg"
-            name="The Coca Cola Company"
-            employees={20000}
-            reports={392}
-            trend={84}
-            mcr="Racism"
-        />
-        <Reports />
-    </Box>
-);
+const Company = () => {
+  const { id } = useParams();
+  const [employerData, setEmployerData] = useState({});
 
-export default company;
+  useEffect(() => {
+    // fetch data from firebase
+    const fetchFirebaseData = async () => {
+      const firebaseDoc = await firebase
+        .firestore()
+        .collection("employers")
+        .doc(id)
+        .get();
+      const data = firebaseDoc.data();
+      setEmployerData(data);
+      console.log(data);
+    };
+    fetchFirebaseData();
+  }, [id]);
+
+  return (
+    <Box display="flex" flexDirection="column" justifyContent="center">
+      <Banner source={employerData.backgroundImageURL} />
+      <Stats
+        logo={employerData.imageURL}
+        name={employerData.name}
+        employees={employerData.numEmployees}
+        reports={employerData.numReports}
+        trend={84}
+        mcr="Racism"
+      />
+      <Reports />
+    </Box>
+  );
+};
+
+export default Company;
