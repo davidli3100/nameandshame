@@ -26,7 +26,7 @@ const EmployerHits = connectHits(customEmployerHits);
 const Index = () => (
   <Fragment>
     <Hero />
-    <Box px={isMobile() ? "40px" : "64px"} py="56px">
+    <Box px={isMobile() ? "20px" : "64px"} py="56px">
       <Text fontSize="32px" color="blueGray.900" fontWeight="bold" mb="32px">
         Browse Employers
       </Text>

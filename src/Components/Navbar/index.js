@@ -76,7 +76,7 @@ const Navbar = () => {
       <Mobile>
         <Box
           width="100%"
-          px="32px"
+          px="20px"
           height="52px"
           boxShadow="0px 1.25px 0px #F3F4F4"
           display="flex"

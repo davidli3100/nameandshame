@@ -1,6 +1,6 @@
 /**
  * Helper to determine if a screen is a mobile device or not
- * @returns {boolean}
+ * @returns {boolean} is the screen mobile-sized
  */
 export const isMobile = () => {
   return window.innerWidth < 736;
