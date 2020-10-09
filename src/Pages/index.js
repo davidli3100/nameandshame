@@ -20,6 +20,7 @@ import Hero from "../Components/Hero";
 import CustomRangeSlider from "../Components/RangeSlider";
 import CustomSearch from "../Components/CustomSearch";
 import { isMobile } from "../Components/MediaQueries";
+import CustomRefinementList from "../Components/CustomRefinementList";
 
 const searchClient = algoliasearch(
   "FEQR412FHW",
@@ -33,7 +34,7 @@ const EmployerHits = connectHits(customEmployerHits);
 
 const FilterPanel = () => (
   <>
-    <Box mt="24px" mb="32px">
+    <Box mt="24px">
       <Panel header="Sort">
         <Box mt="8px">
           <SortBy
@@ -57,12 +58,17 @@ const FilterPanel = () => (
         </Box>
       </Panel>
     </Box>
-    <Panel header="Employees">
-      <CustomRangeSlider attribute="numEmployees" min={1} max={10000} />
-    </Panel>
-    <Panel header="Categories">
-      <RefinementList attribute="categories" />
-    </Panel>
+    <Box mt="32px">
+      <Panel header="Employees">
+        <CustomRangeSlider attribute="numEmployees" min={1} max={10000} />
+      </Panel>
+    </Box>
+    <Box mt="52px">
+      <Panel header="Categories">
+        {/* <RefinementList attribute="categories" /> */}
+        <CustomRefinementList attribute="categories" />
+      </Panel>
+    </Box>
   </>
 );
 
