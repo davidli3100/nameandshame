@@ -1,67 +1,67 @@
 .ais-RangeSlider .rheostat-progress {
-  background-color: #0084f4;
-  border-radius: 2px;
-  height: 6px;
+    background-color: #0084f4;
+    border-radius: 2px;
+    height: 6px;
 }
 
 .rheostat {
-  margin: 16px 6px 32px 6px !important;
+    margin: 16px 6px 32px 6px !important;
 }
 
 .rheostat-handle {
-  z-index: 1;
-  width: 20px;
-  height: 20px;
-  border-radius: 9999px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.1) 0.5px 1.2px 3.2px 0.5px,
-    rgba(0, 0, 0, 0.06) 0.5px 1.2px 2.2px 0.5px;
-  border: 1px solid transparent;
-  transition: transform 0.2s ease 0s;
-  border: none !important;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0.5px 1.2px 3.2px 0.5px,
+        rgba(0, 0, 0, 0.06) 0.5px 1.2px 2.2px 0.5px;
+    border: 1px solid transparent;
+    transition: transform 0.2s ease 0s;
+    border: none !important;
 }
 
 .rheostat-background {
-  border: none !important;
-  background-color: rgb(226, 232, 240) !important;
+    border: none !important;
+    background-color: rgb(226, 232, 240) !important;
 }
 
 /**
 Search widget overrides
 **/
 .ais-Panel-header {
-  text-transform: capitalize;
-  font-size: 1rem;
-  color: #102a43;
-  /* border-bottom: 1.5px solid #9fb3c8; */
-  border: none;
+    text-transform: capitalize;
+    font-size: 1rem;
+    color: #102a43;
+    /* border-bottom: 1.5px solid #9fb3c8; */
+    border: none;
 }
 
 .ais-SortBy-select {
-  width: 100%;
-  background-position: 96% 53% !important;
-  padding: 0.5rem 2rem 0.5rem 0.8rem;
-  border-radius: 4px;
+    width: 100%;
+    background-position: 96% 53% !important;
+    padding: 0.5rem 2rem 0.5rem 0.8rem;
+    border-radius: 4px;
 }
 
 .ais-SearchBox-submit {
-  left: 0rem;
-  margin-bottom: 2px;
-  height: 16px;
-  width: 16px;
+    left: 0rem;
+    margin-bottom: 2px;
+    height: 16px;
+    width: 16px;
 }
 
 .ais-SearchBox-input {
-  padding: 0.3rem 1.6rem;
-  margin-top: 2px;
-  color: #829ab1;
-  border: none;
-  border-bottom: 1.5px solid #9fb3c8;
-  border-radius: 0px;
+    padding: 0.3rem 1.6rem;
+    margin-top: 2px;
+    color: #829ab1;
+    border: none;
+    border-bottom: 1.5px solid #9fb3c8;
+    border-radius: 0px;
 }
 
 .ais-SearchBox-reset {
-  height: 16px;
-  width: 16px;
-  right: 0.2rem;
+    height: 16px;
+    width: 16px;
+    right: 0.2rem;
 }
