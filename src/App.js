@@ -7,7 +7,7 @@ import "./static/fonts/fonts.css";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Index from "./Pages";
-import Company from "./Pages/company";
+import Employer from "./Pages/employer";
 import SEO from "./Components/SEO";
 
 const firebaseConfig = {
@@ -35,7 +35,7 @@ function App() {
                             <Index />
                         </Route>
                         <Route path="/employer/:id">
-                            <Company />
+                            <Employer />
                         </Route>
                     </Switch>
                 </Router>
