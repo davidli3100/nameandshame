@@ -4,8 +4,8 @@ import Tag from "../Tag";
 import Dotdotdot from "react-dotdotdot";
 
 const Report = ({ hit }) => {
-  const { title, description, date, categories } = hit;
-  const dateObj = new Date(date._seconds * 1000);
+  const { title, description, dateMillis, categories } = hit;
+  const dateObj = new Date(dateMillis);
   const dateString = dateObj.toLocaleString("default", {
     month: "short",
     day: "numeric",

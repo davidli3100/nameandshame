@@ -55,6 +55,10 @@ const Company = () => {
           mcr="Racism"
         />
         <InstantSearch indexName="Reports" searchClient={searchClient}>
+          <VirtualRefinementList
+            attribute="employerRef"
+            defaultRefinement={id}
+          />
           <Box
             display="grid"
             mt="50px"
