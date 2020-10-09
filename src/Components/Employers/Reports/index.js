@@ -8,7 +8,7 @@ const Reports = () => (
         mt="50px"
         py="50px"
         px="5vw"
-        gridTemplateColumns="repeat(auto-fit, minmax(400px, 1fr))"
+        gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
         gridColumnGap="40px"
         gridRowGap={5}
         maxWidth="100%"
