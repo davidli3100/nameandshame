@@ -1,4 +1,4 @@
-import { Box, Checkbox, Tag } from "@chakra-ui/core";
+import { Box, Checkbox } from "@chakra-ui/core";
 import React from "react";
 import { connectRefinementList } from "react-instantsearch-dom";
 
