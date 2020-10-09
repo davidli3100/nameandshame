@@ -13,6 +13,7 @@ import {
   connectHits,
   SortBy,
   Panel,
+  RefinementList,
 } from "react-instantsearch-dom";
 import CompanyCard from "../Components/CompanyCard";
 import Hero from "../Components/Hero";
@@ -58,6 +59,9 @@ const FilterPanel = () => (
     </Box>
     <Panel header="Employees">
       <CustomRangeSlider attribute="numEmployees" min={1} max={10000} />
+    </Panel>
+    <Panel header="Categories">
+      <RefinementList attribute="categories" />
     </Panel>
   </>
 );
