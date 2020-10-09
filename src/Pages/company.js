@@ -28,7 +28,11 @@ const Company = () => {
   const [employerData, setEmployerData] = useState({});
 
   useEffect(() => {
-    // fetch data from firebase
+    /**
+     * Fetches firebase data
+     * Best practice to declare an async function within `useEffect`
+     * and then call it to prevent race conditions
+     */
     const fetchFirebaseData = async () => {
       const firebaseDoc = await firebase
         .firestore()
