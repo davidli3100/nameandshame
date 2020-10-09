@@ -28,7 +28,13 @@ const Company = () => {
 
     return (
         <Box display="flex" flexDirection="column" justifyContent="center">
-            <Banner source={employerData.backgroundImageURL} />
+            <Banner
+                source={
+                    employerData.backgroundImageURL
+                        ? employerData.backgroundImageURL
+                        : "https://discussions.apple.com/content/attachment/fb904572-9e83-4c9f-a517-d06cbf1e0320"
+                }
+            />
             <Stats
                 logo={employerData.imageURL}
                 name={employerData.name}
