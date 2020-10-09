@@ -3,7 +3,7 @@
  * @returns {boolean} is the screen mobile-sized
  */
 export const isMobile = () => {
-  return window.innerWidth < 736;
+    return window.innerWidth < 736;
 };
 
 export const Mobile = ({ children }) => (isMobile() ? children : null);
