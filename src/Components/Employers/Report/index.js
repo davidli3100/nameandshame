@@ -8,7 +8,6 @@ const Report = ({ title, date, desc }) => (
         border="1px solid #F0F4F8"
         px="28px"
         py="24px"
-        maxWidth="600px"
         overflow="hidden"
         borderRadius="8px"
         transition="transform .5s"
