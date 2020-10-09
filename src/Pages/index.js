@@ -91,7 +91,7 @@ const Index = () => (
                   </Box>
                   <AccordionIcon color="blueGray.900" />
                 </AccordionHeader>
-                <AccordionPanel>
+                <AccordionPanel px="0">
                   <FilterPanel />
                 </AccordionPanel>
               </AccordionItem>
