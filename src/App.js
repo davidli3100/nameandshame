@@ -23,25 +23,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  return (
-    <div className="App">
-      <SEO />
-      <ThemeProvider theme={theme}>
-        <CSSReset />
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Index />
-            </Route>
-            <Route path="/employer/:id">
-              <Company />
-            </Route>
-          </Switch>
-        </Router>
-      </ThemeProvider>
-    </div>
-  );
+    return (
+        <div className="App">
+            <SEO />
+            <ThemeProvider theme={theme}>
+                <CSSReset />
+                <Router>
+                    <Navbar />
+                    <Switch>
+                        <Route exact path="/">
+                            <Index />
+                        </Route>
+                        <Route path="/employer/:id">
+                            <Company />
+                        </Route>
+                    </Switch>
+                </Router>
+            </ThemeProvider>
+        </div>
+    );
 }
 
 export default App;
