@@ -74,7 +74,14 @@ const Index = () => (
   <Fragment>
     <Hero />
     <Box px={isMobile() ? "20px" : "64px"} py="56px">
-      <Text fontSize="32px" color="blueGray.900" fontWeight="bold" mb="32px">
+      <Text
+        fontSize="32px"
+        color="blueGray.900"
+        fontWeight="bold"
+        maxW="320px"
+        margin={["auto", null, "0"]}
+        mb="32px"
+      >
         Browse Employers
       </Text>
       <InstantSearch indexName="Employers" searchClient={searchClient}>
@@ -82,7 +89,7 @@ const Index = () => (
           display="grid"
           gridTemplateColumns={["1fr", null, null, null, "270px 1fr"]}
           gridColumnGap="80px"
-          gridRowGap="20px"
+          gridRowGap="40px"
         >
           <Box justifySelf="center" width={isMobile() ? "320px" : "100%"}>
             <CustomSearch />
