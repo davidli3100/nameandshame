@@ -1,4 +1,11 @@
-import { Box } from "@chakra-ui/core";
+import {
+  Box,
+  Text,
+  AccordionHeader,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+} from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
 import * as firebase from "firebase";
 import "firebase/firestore";
@@ -9,9 +16,14 @@ import {
   connectHits,
   InstantSearch,
   connectRefinementList,
+  Panel,
+  SortBy,
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
 import Report from "../Components/Employers/Report";
+import CustomRefinementList from "../Components/CustomRefinementList";
+import { isMobile } from "../Components/MediaQueries";
+import CustomSearch from "../Components/CustomSearch";
 
 const searchClient = algoliasearch(
   "FEQR412FHW",
@@ -22,6 +34,35 @@ const customReportHits = ({ hits }) => hits.map((hit) => <Report hit={hit} />);
 
 const VirtualRefinementList = connectRefinementList(() => null);
 const EmployerHits = connectHits(customReportHits);
+
+const FilterPanel = () => (
+  <Box maxWidth="600px" width="100%">
+    <Box mt="24px">
+      <Panel header="Sort">
+        <Box mt="8px">
+          <SortBy
+            defaultRefinement="Reports"
+            items={[
+              { value: "Reports", label: "Default" },
+              { value: "Reports_dateMillis_asc", label: "Date (asc)" },
+              { value: "Reports_dateMillis_desc", label: "Date (desc)" },
+            ]}
+          />
+        </Box>
+      </Panel>
+    </Box>
+    {/* <Box mt="32px">
+      <Panel header="Employees">
+        <CustomRangeSlider attribute="numEmployees" min={1} max={10000} />
+      </Panel>
+    </Box> */}
+    <Box mt="32px">
+      <Panel header="Categories">
+        <CustomRefinementList attribute="categories" />
+      </Panel>
+    </Box>
+  </Box>
+);
 
 const Company = () => {
   const { id } = useParams();
@@ -59,22 +100,59 @@ const Company = () => {
           mcr="Racism"
         />
         <InstantSearch indexName="Reports" searchClient={searchClient}>
-          <VirtualRefinementList
-            attribute="employerRef"
-            defaultRefinement={id}
-          />
           <Box
-            display="grid"
-            mt="50px"
-            py="50px"
-            px="100px"
-            gridTemplateColumns="repeat(auto-fit, minmax(400px, 600px))"
-            gridColumnGap="40px"
-            gridRowGap={5}
-            maxWidth="100%"
-            justifyContent="center"
+            margin="auto"
+            mt={["56px", null, "80px"]}
+            width="fit-content"
+            minWidth={["280px", null, "400px"]}
+            px={["40px", null, "80px"]}
           >
-            <EmployerHits />
+            <Text
+              fontSize="32px"
+              color="blueGray.900"
+              fontWeight="bold"
+              maxW="320px"
+              margin={[null, null, "0"]}
+              mb="32px"
+            >
+              Browse Reports
+            </Text>
+            <VirtualRefinementList
+              attribute="employerRef"
+              defaultRefinement={id}
+            />
+            <CustomSearch />
+            {isMobile() ? (
+              <AccordionItem border="none">
+                <AccordionHeader mt="16px" px="0">
+                  <Box
+                    flex="1"
+                    textAlign="left"
+                    color="blueGray.900"
+                    fontWeight="600"
+                  >
+                    Filter
+                  </Box>
+                  <AccordionIcon color="blueGray.900" />
+                </AccordionHeader>
+                <AccordionPanel px="0">
+                  <FilterPanel />
+                </AccordionPanel>
+              </AccordionItem>
+            ) : (
+              <FilterPanel />
+            )}
+            <Box
+              display="grid"
+              my={["32px", null, "50px"]}
+              gridTemplateColumns="repeat(auto-fit, minmax(400px, 600px))"
+              gridColumnGap="40px"
+              gridRowGap={5}
+              maxWidth="100%"
+              justifyContent="center"
+            >
+              <EmployerHits />
+            </Box>
           </Box>
         </InstantSearch>
       </Box>
