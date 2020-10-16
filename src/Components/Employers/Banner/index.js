@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Image } from "@chakra-ui/core";
+import Fallback from "../../../Assets/fallback.jpg";
 
 const Banner = ({ source }) => (
     <Box>
@@ -9,7 +10,7 @@ const Banner = ({ source }) => (
             display="flex"
             alignItems="center"
         >
-            <Image src={source} width="100%" />
+            <Image src={source} width="100%" fallbackSrc={Fallback} />
         </Box>
     </Box>
 );
