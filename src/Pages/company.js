@@ -122,26 +122,22 @@ const Company = () => {
               defaultRefinement={id}
             />
             <CustomSearch />
-            {isMobile() ? (
-              <AccordionItem border="none">
-                <AccordionHeader mt="16px" px="0">
-                  <Box
-                    flex="1"
-                    textAlign="left"
-                    color="blueGray.900"
-                    fontWeight="600"
-                  >
-                    Filter
-                  </Box>
-                  <AccordionIcon color="blueGray.900" />
-                </AccordionHeader>
-                <AccordionPanel px="0">
-                  <FilterPanel />
-                </AccordionPanel>
-              </AccordionItem>
-            ) : (
-              <FilterPanel />
-            )}
+            <AccordionItem border="none">
+              <AccordionHeader mt="16px" px="0">
+                <Box
+                  flex="1"
+                  textAlign="left"
+                  color="blueGray.900"
+                  fontWeight="600"
+                >
+                  Filter
+                </Box>
+                <AccordionIcon color="blueGray.900" />
+              </AccordionHeader>
+              <AccordionPanel px="0">
+                <FilterPanel />
+              </AccordionPanel>
+            </AccordionItem>
             <Box
               display="grid"
               my={["32px", null, "50px"]}
