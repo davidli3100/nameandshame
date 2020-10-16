@@ -2,11 +2,16 @@ import React from "react";
 import { Box, Image } from "@chakra-ui/core";
 
 const Banner = ({ source }) => (
-  <Box>
-    <Box maxHeight="300px" overflow="hidden" display="flex" alignItems="center">
-      <Image src={source} width="100%" />
+    <Box>
+        <Box
+            maxHeight="300px"
+            overflow="hidden"
+            display="flex"
+            alignItems="center"
+        >
+            <Image src={source} width="100%" />
+        </Box>
     </Box>
-  </Box>
 );
 
 export default Banner;

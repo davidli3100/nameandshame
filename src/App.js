@@ -7,7 +7,8 @@ import "./static/fonts/fonts.css";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Index from "./Pages";
-import Company from "./Pages/company";
+import Employer from "./Pages/employer";
+import About from "./Pages/about";
 import SEO from "./Components/SEO";
 
 const firebaseConfig = {
@@ -23,25 +24,28 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  return (
-    <div className="App">
-      <SEO />
-      <ThemeProvider theme={theme}>
-        <CSSReset />
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Index />
-            </Route>
-            <Route path="/employer/:id">
-              <Company />
-            </Route>
-          </Switch>
-        </Router>
-      </ThemeProvider>
-    </div>
-  );
+    return (
+        <div className="App">
+            <SEO />
+            <ThemeProvider theme={theme}>
+                <CSSReset />
+                <Router>
+                    <Navbar />
+                    <Switch>
+                        <Route exact path="/">
+                            <Index />
+                        </Route>
+                        <Route path="/employer/:id">
+                            <Employer />
+                        </Route>
+                        <Route exact path="/about">
+                            <About />
+                        </Route>
+                    </Switch>
+                </Router>
+            </ThemeProvider>
+        </div>
+    );
 }
 
 export default App;
