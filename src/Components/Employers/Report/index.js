@@ -16,7 +16,14 @@ import {
 import Tag from "../Tag";
 import Dotdotdot from "react-dotdotdot";
 
-const Report = ({ title, date, desc }) => {
+const Report = ({ hit }) => {
+    const { title, description, dateMillis, categories } = hit;
+    const dateObj = new Date(dateMillis);
+    const dateString = dateObj.toLocaleString("default", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+    });
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <>
@@ -24,6 +31,7 @@ const Report = ({ title, date, desc }) => {
                 border="1px solid #F0F4F8"
                 px="28px"
                 py="24px"
+                maxWidth="600px"
                 overflow="hidden"
                 borderRadius="8px"
                 transition="transform .5s"
@@ -35,17 +43,17 @@ const Report = ({ title, date, desc }) => {
                     {title}
                 </Heading>
                 <Heading size="sm" color="blueGray.400" fontWeight="600">
-                    {date}
+                    {dateString}
                 </Heading>
                 <Box mt="20px" display="flex" flexDirection="row">
-                    <Tag name="Racism" />
-                    <Tag name="Gender" />
-                    <Tag name="Sexuality" />
+                    {categories.map((category) => (
+                        <Tag name={category} />
+                    ))}
                 </Box>
                 <Box mt="20px" textAlign="justify">
                     <Dotdotdot clamp={4}>
                         <Text lineHeight="20px" color="blueGray.400">
-                            {desc}
+                            {description}
                         </Text>
                     </Dotdotdot>
                 </Box>
@@ -71,12 +79,12 @@ const Report = ({ title, date, desc }) => {
                             color="blueGray.400"
                             fontWeight="600"
                         >
-                            {date}
+                            {dateString}
                         </Heading>
                         <Box mt="20px" display="flex" flexDirection="row">
-                            <Tag name="Racism" />
-                            <Tag name="Gender" />
-                            <Tag name="Sexuality" />
+                            {categories.map((category) => (
+                                <Tag name={category} />
+                            ))}
                         </Box>
                     </ModalHeader>
                     <ModalCloseButton />
@@ -86,7 +94,7 @@ const Report = ({ title, date, desc }) => {
                             color="blueGray.400"
                             textAlign="justify"
                         >
-                            {desc}
+                            {description}
                         </Text>
                     </ModalBody>
                     <ModalFooter />

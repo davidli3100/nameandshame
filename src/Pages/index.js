@@ -19,6 +19,7 @@ import Hero from "../Components/Hero";
 import CustomRangeSlider from "../Components/RangeSlider";
 import CustomSearch from "../Components/CustomSearch";
 import { isMobile } from "../Components/MediaQueries";
+import CustomRefinementList from "../Components/CustomRefinementList";
 
 const searchClient = algoliasearch(
     "FEQR412FHW",
@@ -32,7 +33,7 @@ const EmployerHits = connectHits(customEmployerHits);
 
 const FilterPanel = () => (
     <>
-        <Box mt="24px" mb="32px">
+        <Box mt="24px">
             <Panel header="Sort">
                 <Box mt="8px">
                     <SortBy
@@ -68,9 +69,20 @@ const FilterPanel = () => (
                 </Box>
             </Panel>
         </Box>
-        <Panel header="Employees">
-            <CustomRangeSlider attribute="numEmployees" min={1} max={10000} />
-        </Panel>
+        <Box mt="32px">
+            <Panel header="Employees">
+                <CustomRangeSlider
+                    attribute="numEmployees"
+                    min={1}
+                    max={10000}
+                />
+            </Panel>
+        </Box>
+        <Box mt="52px">
+            <Panel header="Categories">
+                <CustomRefinementList attribute="categories" />
+            </Panel>
+        </Box>
     </>
 );
 
@@ -82,6 +94,8 @@ const Index = () => (
                 fontSize="32px"
                 color="blueGray.900"
                 fontWeight="bold"
+                maxW="320px"
+                margin={["auto", null, "0"]}
                 mb="32px"
             >
                 Browse Employers
@@ -91,7 +105,7 @@ const Index = () => (
                     display="grid"
                     gridTemplateColumns={["1fr", null, null, null, "270px 1fr"]}
                     gridColumnGap="80px"
-                    gridRowGap="20px"
+                    gridRowGap="40px"
                 >
                     <Box
                         justifySelf="center"
