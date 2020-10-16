@@ -4,7 +4,6 @@ import {
     Heading,
     Text,
     PseudoBox,
-    Button,
     Modal,
     ModalOverlay,
     ModalContent,
