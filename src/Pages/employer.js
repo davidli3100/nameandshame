@@ -18,6 +18,7 @@ import {
     connectRefinementList,
     Panel,
     SortBy,
+    Pagination,
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
 import Report from "../Components/Employers/Report";
@@ -148,6 +149,9 @@ const Company = () => {
                             justifyContent="center"
                         >
                             <EmployerHits />
+                        </Box>
+                        <Box my={["32px", null, "48px"]}>
+                            <Pagination showFirst={false} />
                         </Box>
                     </Box>
                 </InstantSearch>

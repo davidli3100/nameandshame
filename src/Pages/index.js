@@ -13,6 +13,7 @@ import {
     connectHits,
     SortBy,
     Panel,
+    Pagination,
 } from "react-instantsearch-dom";
 import CompanyCard from "../Components/CompanyCard";
 import Hero from "../Components/Hero";
@@ -133,15 +134,20 @@ const Index = () => (
                             <FilterPanel />
                         )}
                     </Box>
-                    <Box
-                        display="grid"
-                        gridTemplateColumns="repeat(auto-fit, 320px)"
-                        gridColumnGap="40px"
-                        gridRowGap="40px"
-                        maxWidth="100%"
-                        justifySelf={isMobile() && "center"}
-                    >
-                        <EmployerHits />
+                    <Box display="flex" flexDirection="column">
+                        <Box
+                            display="grid"
+                            gridTemplateColumns="repeat(auto-fit, 320px)"
+                            gridColumnGap="40px"
+                            gridRowGap="40px"
+                            maxWidth="100%"
+                            justifySelf={isMobile() && "center"}
+                        >
+                            <EmployerHits />
+                        </Box>
+                        <Box marginTop="auto">
+                            <Pagination showFirst={false} />
+                        </Box>
                     </Box>
                 </Box>
             </InstantSearch>
