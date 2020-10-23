@@ -9,6 +9,7 @@ import Navbar from "./Components/Navbar";
 import Index from "./Pages";
 import Employer from "./Pages/employer";
 import About from "./Pages/about";
+import Report from "./Pages/report";
 import SEO from "./Components/SEO";
 
 const firebaseConfig = {
@@ -40,6 +41,9 @@ function App() {
                         </Route>
                         <Route exact path="/about">
                             <About />
+                        </Route>
+                        <Route exact path="/report">
+                            <Report />
                         </Route>
                     </Switch>
                 </Router>
