@@ -145,7 +145,7 @@ const Index = () => (
                         >
                             <EmployerHits />
                         </Box>
-                        <Box marginTop="auto">
+                        <Box marginTop={["32px", null, "auto"]}>
                             <Pagination showFirst={false} />
                         </Box>
                     </Box>
