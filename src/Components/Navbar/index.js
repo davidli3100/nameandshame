@@ -9,6 +9,7 @@ import {
     IconButton,
     Text,
     useDisclosure,
+    DrawerCloseButton,
 } from "@chakra-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import { Desktop, Mobile, isMobile } from "../MediaQueries";
@@ -113,6 +114,7 @@ const Navbar = () => {
                 >
                     <DrawerOverlay />
                     <DrawerContent>
+                        <DrawerCloseButton />
                         <DrawerBody>
                             <Box
                                 display="flex"
