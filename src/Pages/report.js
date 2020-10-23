@@ -30,6 +30,7 @@ const tagStyles = {
         return {
             ...styles,
             borderColor: "#D9E2EC",
+            height: "40px",
             ":hover": {
                 borderColor: "#CBD5E0",
             },
