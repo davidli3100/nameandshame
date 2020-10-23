@@ -18,7 +18,12 @@ const Report = () => (
         <Box
             mt="50px"
             display="grid"
-            gridTemplateColumns="repeat(auto-fit, minmax(400px, 1fr))"
+            gridTemplateColumns={[
+                "repeat(auto-fit, minmax(280px, 1fr))",
+                null,
+                "repeat(auto-fit, minmax(400px, 1fr))",
+                null,
+            ]}
             gridColumnGap={5}
             gridRowGap={5}
         >
