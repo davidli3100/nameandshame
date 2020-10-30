@@ -1,17 +1,30 @@
 import React from "react";
-import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
 import { connectAutoComplete } from "react-instantsearch-dom";
+import { useHistory } from "react-router-dom";
 
-const EmployerAutocomplete = ({ hits, refine, selectStyles }) => (
-    <Select
-        className="basic-single"
-        classNamePrefix="select"
-        isSearchable
-        onInputChange={(newValue, actionMeta) => refine(newValue)}
-        name="color"
-        options={hits.map((hit) => ({ label: hit.name, value: hit.objectID }))}
-        styles={selectStyles}
-    />
-);
+const EmployerAutocomplete = ({ hits, refine, selectStyles }) => {
+    let history = useHistory();
+
+    const handleCreate = (value) => {
+        history.push(`/add/employer/${value}`);
+    };
+
+    return (
+        <CreatableSelect
+            className="basic-single"
+            classNamePrefix="select"
+            isSearchable
+            onInputChange={(newValue, actionMeta) => refine(newValue)}
+            name="color"
+            options={hits.map((hit) => ({
+                label: hit.name,
+                value: hit.objectID,
+            }))}
+            styles={selectStyles}
+            onCreateOption={handleCreate}
+        />
+    );
+};
 
 export default connectAutoComplete(EmployerAutocomplete);
