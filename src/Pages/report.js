@@ -14,7 +14,7 @@ import makeAnimated from "react-select/animated";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "../Datepicker.css";
 import Autocomplete from "../Components/Autocomplete";
-import { InstantSearch, connectRefinementList } from "react-instantsearch-dom";
+import { InstantSearch } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
 import { useParams } from "react-router-dom";
 
@@ -69,8 +69,6 @@ const searchClient = algoliasearch(
     "1eeb94ee61382152f97c1f18b869926c"
 );
 
-const VirtualRefinementList = connectRefinementList(() => null);
-
 const Report = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const { id } = useParams();
@@ -112,10 +110,7 @@ const Report = () => {
                             indexName="Employers"
                             searchClient={searchClient}
                         >
-                            <Autocomplete
-                                prefilled={id}
-                                selectStyles={tagStyles}
-                            />
+                            <Autocomplete selectStyles={tagStyles} />
                         </InstantSearch>
                         <FormLabel htmlFor="tags" mt="20px">
                             <Heading color="blue.900" size="sm">
