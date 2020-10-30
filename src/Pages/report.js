@@ -75,6 +75,17 @@ const Report = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const { id } = useParams();
 
+    /**
+     * What follows is not best practice
+     * but we probably don't have the time to set up formik
+     * or a similar form management library
+     */
+    const [employer, setEmployer] = useState();
+    const [tags, setTags] = useState();
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const [date, setDate] = useState();
+
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
             <Heading color="blue.900">Submit a Report</Heading>
