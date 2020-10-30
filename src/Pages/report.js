@@ -8,11 +8,11 @@ import {
     Textarea,
     Button,
     FormHelperText,
-    InputLeftElement,
-    InputGroup,
 } from "@chakra-ui/core";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "../Datepicker.css";
 import Autocomplete from "../Components/Autocomplete";
 import { InstantSearch, connectRefinementList } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
@@ -141,11 +141,9 @@ const Report = () => {
                                 Date of Incident
                             </Heading>
                         </FormLabel>
-                        <Input
-                            placeholder="Date"
-                            id="date"
-                            aria-describedby="date-helper"
-                        />
+                        <Box id="date">
+                            <DayPickerInput />
+                        </Box>
                         <FormHelperText id="date-helper">
                             When did the incident that you are reporting occur?
                         </FormHelperText>
