@@ -14,8 +14,10 @@ import {
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-// import "react-day-picker/lib/style.css";
 import "../Datepicker.css";
+import Autocomplete from "../Components/Autocomplete";
+import { InstantSearch } from "react-instantsearch-dom";
+import algoliasearch from "algoliasearch";
 
 const tags = [
     {
@@ -61,9 +63,12 @@ const tagStyles = {
     },
 };
 
-const dateStyles = {};
-
 const animatedComponents = makeAnimated();
+
+const searchClient = algoliasearch(
+    "FEQR412FHW",
+    "1eeb94ee61382152f97c1f18b869926c"
+);
 
 const Report = () => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -89,29 +94,12 @@ const Report = () => {
                                 Employer
                             </Heading>
                         </FormLabel>
-                        <InputGroup>
-                            <InputLeftElement
-                                children={
-                                    <Box width="18px" height="18px">
-                                        <svg
-                                            class="w-6 h-6"
-                                            fill="none"
-                                            stroke="#829AB1"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                            ></path>
-                                        </svg>
-                                    </Box>
-                                }
-                            />
-                            <Input placeholder="ACME Inc." id="employer" />
-                        </InputGroup>
+                        <InstantSearch
+                            indexName="Employers"
+                            searchClient={searchClient}
+                        >
+                            <Autocomplete selectStyles={tagStyles} />
+                        </InstantSearch>
                         <FormLabel htmlFor="tags" mt="20px">
                             <Heading color="blue.900" size="sm">
                                 Tags
@@ -147,11 +135,6 @@ const Report = () => {
                                 Date of Incident
                             </Heading>
                         </FormLabel>
-                        {/* <Input
-                            placeholder="Date"
-                            id="date"
-                            aria-describedby="date-helper"
-                        /> */}
                         <Box id="date">
                             <DayPickerInput />
                         </Box>
