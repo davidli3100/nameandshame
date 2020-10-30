@@ -8,8 +8,6 @@ import {
     Textarea,
     Button,
     FormHelperText,
-    InputLeftElement,
-    InputGroup,
 } from "@chakra-ui/core";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
