@@ -14,8 +14,9 @@ import {
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Autocomplete from "../Components/Autocomplete";
-import { InstantSearch } from "react-instantsearch-dom";
+import { InstantSearch, connectRefinementList } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
+import { useParams } from "react-router-dom";
 
 const tags = [
     {
@@ -68,8 +69,12 @@ const searchClient = algoliasearch(
     "1eeb94ee61382152f97c1f18b869926c"
 );
 
+const VirtualRefinementList = connectRefinementList(() => null);
+
 const Report = () => {
     const [selectedOption, setSelectedOption] = useState(null);
+    const { id } = useParams();
+
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
             <Heading color="blue.900">Submit a Report</Heading>
@@ -96,7 +101,10 @@ const Report = () => {
                             indexName="Employers"
                             searchClient={searchClient}
                         >
-                            <Autocomplete selectStyles={tagStyles} />
+                            <Autocomplete
+                                prefilled={id}
+                                selectStyles={tagStyles}
+                            />
                         </InstantSearch>
                         <FormLabel htmlFor="tags" mt="20px">
                             <Heading color="blue.900" size="sm">
