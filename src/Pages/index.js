@@ -137,7 +137,7 @@ const Index = () => (
                     <Box display="flex" flexDirection="column">
                         <Box
                             display="grid"
-                            gridTemplateColumns="repeat(auto-fit, 320px)"
+                            gridTemplateColumns="repeat(auto-fit, minmax(320px, 1fr))"
                             gridColumnGap="40px"
                             gridRowGap="40px"
                             maxWidth="100%"
