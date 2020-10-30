@@ -62,6 +62,7 @@ const animatedComponents = makeAnimated();
 
 const Report = () => {
     const [selectedOption, setSelectedOption] = useState(null);
+    console.log(selectedOption);
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
             <Heading color="blue.900">Submit a Report</Heading>
