@@ -13,6 +13,9 @@ import {
 } from "@chakra-ui/core";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+// import "react-day-picker/lib/style.css";
+import "../Datepicker.css";
 
 const tags = [
     {
@@ -57,6 +60,8 @@ const tagStyles = {
         return { color: "#9FB3C8" };
     },
 };
+
+const dateStyles = {};
 
 const animatedComponents = makeAnimated();
 
@@ -142,11 +147,14 @@ const Report = () => {
                                 Date of Incident
                             </Heading>
                         </FormLabel>
-                        <Input
+                        {/* <Input
                             placeholder="Date"
                             id="date"
                             aria-describedby="date-helper"
-                        />
+                        /> */}
+                        <Box id="date">
+                            <DayPickerInput />
+                        </Box>
                         <FormHelperText id="date-helper">
                             When did the incident that you are reporting occur?
                         </FormHelperText>
