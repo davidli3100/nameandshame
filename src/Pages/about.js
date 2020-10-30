@@ -36,8 +36,8 @@ const About = () => (
                 mt="25px"
                 maxWidth="1000px"
             >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                We strive to make the world a better place by eliminating
+                harassment of all forms in the workplace, together.
             </Text>
             <Button variantColor="primary" my="50px">
                 <a href="/">Browse Companies</a>
@@ -60,13 +60,13 @@ const About = () => (
                 Our Mission
             </Heading>
             <Text color="blueGray.500" fontSize="lg" my="50px" fontWeight="500">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Harassment is a serious problem in the workplace. Whether its
+                because of race, sex, or sexual orientation, there is no place
+                for it in the world. By making these incidents public and
+                accessibly we hope to raise awareness to the matter and inform
+                future employees of the atmosphere of their future job.
+                Together, we can end create an environment everyone can feel
+                safe and succeed in.
             </Text>
         </Box>
     </Box>
