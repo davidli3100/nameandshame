@@ -79,11 +79,9 @@ const Report = () => {
      * or a similar form management library
      */
     const [employer, setEmployer] = useState();
-    const [tags, setTags] = useState();
-    const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
-    const [date, setDate] = useState();
-
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState(new Date());
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
             <Heading color="blue.900">Submit a Report</Heading>
@@ -110,7 +108,10 @@ const Report = () => {
                             indexName="Employers"
                             searchClient={searchClient}
                         >
-                            <Autocomplete selectStyles={tagStyles} />
+                            <Autocomplete
+                                selectStyles={tagStyles}
+                                setState={setEmployer}
+                            />
                         </InstantSearch>
                         <FormLabel htmlFor="tags" mt="20px">
                             <Heading color="blue.900" size="sm">
@@ -131,7 +132,13 @@ const Report = () => {
                                 Description of Incident(s)
                             </Heading>
                         </FormLabel>
-                        <Textarea height="200px" />
+                        <Textarea
+                            height="200px"
+                            value={description}
+                            onChange={(e) => {
+                                setDescription(e.target.value);
+                            }}
+                        />
                     </FormControl>
                 </Box>
                 <Box>
@@ -141,14 +148,24 @@ const Report = () => {
                                 Employer
                             </Heading>
                         </FormLabel>
-                        <Input placeholder="Title" id="title" />
+                        <Input
+                            placeholder="Title"
+                            id="title"
+                            value={title}
+                            onChange={(e) => {
+                                setTitle(e.target.value);
+                            }}
+                        />
                         <FormLabel htmlFor="date" mt="20px">
                             <Heading color="blue.900" size="sm">
                                 Date of Incident
                             </Heading>
                         </FormLabel>
                         <Box id="date">
-                            <DayPickerInput />
+                            <DayPickerInput
+                                value={date}
+                                onDayChange={(day) => setDate(day)}
+                            />
                         </Box>
                         <FormHelperText id="date-helper">
                             When did the incident that you are reporting occur?

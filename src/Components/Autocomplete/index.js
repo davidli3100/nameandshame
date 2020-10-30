@@ -3,7 +3,7 @@ import CreatableSelect from "react-select/creatable";
 import { connectAutoComplete } from "react-instantsearch-dom";
 import { useHistory } from "react-router-dom";
 
-const EmployerAutocomplete = ({ hits, refine, selectStyles }) => {
+const EmployerAutocomplete = ({ hits, refine, selectStyles, setState }) => {
     const history = useHistory();
 
     const handleCreate = (value) => {
@@ -15,6 +15,7 @@ const EmployerAutocomplete = ({ hits, refine, selectStyles }) => {
             classNamePrefix="select"
             isSearchable
             onInputChange={(newValue, actionMeta) => refine(newValue)}
+            onChange={(value) => setState(value)}
             name="color"
             options={hits.map((hit) => ({
                 label: hit.name,
