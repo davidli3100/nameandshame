@@ -23,7 +23,7 @@ const Hero = () => (
             </Heading>
         </Box>
         <Box>
-            <Image src={hero_image} height="300px" width="auto" />
+            <Image src={hero_image} height="300px" width="auto" alt="Hero" />
         </Box>
     </Box>
 );
