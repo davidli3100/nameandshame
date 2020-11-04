@@ -16,7 +16,6 @@ import "../Datepicker.css";
 import Autocomplete from "../Components/Autocomplete";
 import { InstantSearch } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
-import { useParams } from "react-router-dom";
 
 const tags = [
     {
@@ -71,8 +70,6 @@ const searchClient = algoliasearch(
 
 const Report = () => {
     const [selectedOption, setSelectedOption] = useState(null);
-    const { id } = useParams();
-
     /**
      * What follows is not best practice
      * but we probably don't have the time to set up formik
