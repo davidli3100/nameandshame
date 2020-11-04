@@ -18,6 +18,7 @@ import Autocomplete from "../Components/Autocomplete";
 import { InstantSearch } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
 import * as firebase from "firebase";
+import { useHistory } from "react-router-dom";
 // import "firebase/firestore";
 // import "firebase/functions";
 
@@ -84,9 +85,12 @@ const Report = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [date, setDate] = useState();
-    const functions = firebase.functions();
-    const db = firebase.firestore();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const history = useHistory();
+
     const submit = () => {
+        setIsSubmitting(true);
+
         // Make sure all fields are filled
         if (employer === "" || title === "" || description === "" || !date) {
             toast({
@@ -96,12 +100,13 @@ const Report = () => {
                 duration: 9000,
                 isClosable: true,
             });
+            setIsSubmitting(false);
             return;
         }
-        let requestHeaders = new Headers();
+        var requestHeaders = new Headers();
         requestHeaders.append("Content-Type", "application/json");
 
-        const rawData = JSON.stringify({
+        var rawData = JSON.stringify({
             categories: tags.map((tag) => tag.label),
             date: date.getTime(),
             description: description,
@@ -109,7 +114,7 @@ const Report = () => {
             title: title,
         });
 
-        const requestOptions = {
+        var requestOptions = {
             method: "POST",
             headers: requestHeaders,
             body: rawData,
@@ -121,8 +126,30 @@ const Report = () => {
             requestOptions
         )
             .then((response) => response.text())
-            .then((result) => console.log(result))
-            .catch((error) => console.log("error", error));
+            .then((result) => {
+                setIsSubmitting(false);
+                setTimeout(() => {
+                    history.push(`/employer/${employer.value}`);
+                }, 2000);
+                toast({
+                    title: "Report submitted",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                });
+                console.log(result);
+            })
+            .catch((error) => {
+                setIsSubmitting(false);
+                toast({
+                    title: "Error submitting report",
+                    description: "Please try again",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                });
+                console.log("error", error);
+            });
     };
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
@@ -218,6 +245,7 @@ const Report = () => {
             <Button
                 variantColor="primary"
                 mt="20px"
+                isLoading={isSubmitting}
                 onClick={() => {
                     submit();
                 }}
