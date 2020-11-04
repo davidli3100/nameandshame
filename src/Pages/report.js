@@ -98,61 +98,31 @@ const Report = () => {
             });
             return;
         }
-        db.collection("reports")
-            .add({
-                categories: tags.map((tag) => tag.label),
-                date: date,
-                description: description,
-                employerRef: employer.value,
-                title: title,
-            })
-            .then(function (docRef) {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch(function (error) {
-                console.error("Error adding document: ", error);
-            });
-        // fetch(
-        //     "https://cors-anywhere.herokuapp.com/" +
-        //         "https://us-central1-nameandshame-eedd0.cloudfunctions.net/addReport",
-        //     {
-        //         method: "post",
-        //         headers: {
-        //             "Content-type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //             categories: tags.map((tag) => tag.label),
-        //             date: date,
-        //             description: description,
-        //             employerRef: employer.value,
-        //             title: title,
-        //         }),
-        //     }
-        // )
-        //     .then(function (data) {
-        //         console.log("Request succeeded with JSON response", data);
-        //     })
-        //     .catch(function (error) {
-        //         console.log("Request failed", error);
-        //     });
+        let requestHeaders = new Headers();
+        requestHeaders.append("Content-Type", "application/json");
 
-        // const addReport = functions.httpsCallable("a");
-        // const obj = console.log(obj);
-        // addReport(obj)
-        //     .then(function (result) {
-        //         // Read result of the Cloud Function.
-        //         var sanitizedMessage = result.data.text;
-        //         console.log(sanitizedMessage);
-        //     })
-        //     .catch(function (error) {
-        //         // Getting the Error details.
-        //         var code = error.code;
-        //         var message = error.message;
-        //         var details = error.details;
-        //         console.log(code);
-        //         console.log(message);
-        //         console.log(details);
-        //     });
+        const rawData = JSON.stringify({
+            categories: tags.map((tag) => tag.label),
+            date: date.getTime(),
+            description: description,
+            employerRef: employer.value,
+            title: title,
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: requestHeaders,
+            body: rawData,
+            redirect: "follow",
+        };
+
+        fetch(
+            "https://us-central1-nameandshame-eedd0.cloudfunctions.net/addReport",
+            requestOptions
+        )
+            .then((response) => response.text())
+            .then((result) => console.log(result))
+            .catch((error) => console.log("error", error));
     };
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
@@ -217,7 +187,7 @@ const Report = () => {
                     <FormControl>
                         <FormLabel htmlFor="title">
                             <Heading color="blue.900" size="sm">
-                                Employer
+                                Title
                             </Heading>
                         </FormLabel>
                         <Input

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const handleClick = (type, id) => {
     switch (type) {
         case "report":
-            return `/report/${id}`;
+            return `/report/`;
         case "view":
             return `/employer/${id}`;
         default:
