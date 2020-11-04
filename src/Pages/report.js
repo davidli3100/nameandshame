@@ -69,12 +69,15 @@ const searchClient = algoliasearch(
 );
 
 const Report = () => {
+    // eslint-disable-next-line
     const [selectedOption, setSelectedOption] = useState(null);
+
     /**
      * What follows is not best practice
      * but we probably don't have the time to set up formik
      * or a similar form management library
      */
+    // eslint-disable-next-line
     const [employer, setEmployer] = useState();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
