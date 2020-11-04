@@ -8,11 +8,15 @@ import {
     Textarea,
     Button,
     FormHelperText,
-    InputLeftElement,
-    InputGroup,
 } from "@chakra-ui/core";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "../Datepicker.css";
+import Autocomplete from "../Components/Autocomplete";
+import { InstantSearch } from "react-instantsearch-dom";
+import algoliasearch from "algoliasearch";
+import { useParams } from "react-router-dom";
 
 const tags = [
     {
@@ -60,9 +64,24 @@ const tagStyles = {
 
 const animatedComponents = makeAnimated();
 
+const searchClient = algoliasearch(
+    "FEQR412FHW",
+    "1eeb94ee61382152f97c1f18b869926c"
+);
+
 const Report = () => {
     const [selectedOption, setSelectedOption] = useState(null);
-    console.log(selectedOption);
+    const { id } = useParams();
+
+    /**
+     * What follows is not best practice
+     * but we probably don't have the time to set up formik
+     * or a similar form management library
+     */
+    const [employer, setEmployer] = useState();
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState(new Date());
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
             <Heading color="blue.900">Submit a Report</Heading>
@@ -85,29 +104,15 @@ const Report = () => {
                                 Employer
                             </Heading>
                         </FormLabel>
-                        <InputGroup>
-                            <InputLeftElement
-                                children={
-                                    <Box width="18px" height="18px">
-                                        <svg
-                                            class="w-6 h-6"
-                                            fill="none"
-                                            stroke="#829AB1"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                            ></path>
-                                        </svg>
-                                    </Box>
-                                }
+                        <InstantSearch
+                            indexName="Employers"
+                            searchClient={searchClient}
+                        >
+                            <Autocomplete
+                                selectStyles={tagStyles}
+                                setState={setEmployer}
                             />
-                            <Input placeholder="ACME Inc." id="employer" />
-                        </InputGroup>
+                        </InstantSearch>
                         <FormLabel htmlFor="tags" mt="20px">
                             <Heading color="blue.900" size="sm">
                                 Tags
@@ -127,7 +132,13 @@ const Report = () => {
                                 Description of Incident(s)
                             </Heading>
                         </FormLabel>
-                        <Textarea height="200px" />
+                        <Textarea
+                            height="200px"
+                            value={description}
+                            onChange={(e) => {
+                                setDescription(e.target.value);
+                            }}
+                        />
                     </FormControl>
                 </Box>
                 <Box>
@@ -137,17 +148,25 @@ const Report = () => {
                                 Employer
                             </Heading>
                         </FormLabel>
-                        <Input placeholder="Title" id="title" />
+                        <Input
+                            placeholder="Title"
+                            id="title"
+                            value={title}
+                            onChange={(e) => {
+                                setTitle(e.target.value);
+                            }}
+                        />
                         <FormLabel htmlFor="date" mt="20px">
                             <Heading color="blue.900" size="sm">
                                 Date of Incident
                             </Heading>
                         </FormLabel>
-                        <Input
-                            placeholder="Date"
-                            id="date"
-                            aria-describedby="date-helper"
-                        />
+                        <Box id="date">
+                            <DayPickerInput
+                                value={date}
+                                onDayChange={(day) => setDate(day)}
+                            />
+                        </Box>
                         <FormHelperText id="date-helper">
                             When did the incident that you are reporting occur?
                         </FormHelperText>
