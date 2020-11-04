@@ -8,6 +8,7 @@ import {
     Textarea,
     Button,
     FormHelperText,
+    useToast,
 } from "@chakra-ui/core";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -16,9 +17,11 @@ import "../Datepicker.css";
 import Autocomplete from "../Components/Autocomplete";
 import { InstantSearch } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
-import { useParams } from "react-router-dom";
+import * as firebase from "firebase";
+// import "firebase/firestore";
+// import "firebase/functions";
 
-const tags = [
+const tagOptions = [
     {
         value: "racism",
         label: "Racism",
@@ -70,18 +73,87 @@ const searchClient = algoliasearch(
 );
 
 const Report = () => {
-    const [selectedOption, setSelectedOption] = useState(null);
-    const { id } = useParams();
-
+    const toast = useToast();
     /**
      * What follows is not best practice
      * but we probably don't have the time to set up formik
      * or a similar form management library
      */
+    const [tags, setTags] = useState(null);
     const [employer, setEmployer] = useState();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState();
+    const functions = firebase.functions();
+    const db = firebase.firestore();
+    const submit = () => {
+        // Make sure all fields are filled
+        if (employer === "" || title === "" || description === "" || !date) {
+            toast({
+                title: "Missing Fields",
+                description: "You must fill out all fields!",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+            });
+            return;
+        }
+        db.collection("reports")
+            .add({
+                categories: tags.map((tag) => tag.label),
+                date: date,
+                description: description,
+                employerRef: employer.value,
+                title: title,
+            })
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+        // fetch(
+        //     "https://cors-anywhere.herokuapp.com/" +
+        //         "https://us-central1-nameandshame-eedd0.cloudfunctions.net/addReport",
+        //     {
+        //         method: "post",
+        //         headers: {
+        //             "Content-type": "application/json",
+        //         },
+        //         body: JSON.stringify({
+        //             categories: tags.map((tag) => tag.label),
+        //             date: date,
+        //             description: description,
+        //             employerRef: employer.value,
+        //             title: title,
+        //         }),
+        //     }
+        // )
+        //     .then(function (data) {
+        //         console.log("Request succeeded with JSON response", data);
+        //     })
+        //     .catch(function (error) {
+        //         console.log("Request failed", error);
+        //     });
+
+        // const addReport = functions.httpsCallable("a");
+        // const obj = console.log(obj);
+        // addReport(obj)
+        //     .then(function (result) {
+        //         // Read result of the Cloud Function.
+        //         var sanitizedMessage = result.data.text;
+        //         console.log(sanitizedMessage);
+        //     })
+        //     .catch(function (error) {
+        //         // Getting the Error details.
+        //         var code = error.code;
+        //         var message = error.message;
+        //         var details = error.details;
+        //         console.log(code);
+        //         console.log(message);
+        //         console.log(details);
+        //     });
+    };
     return (
         <Box px={["20px", "50px", "10vw", null]} py="50px">
             <Heading color="blue.900">Submit a Report</Heading>
@@ -122,8 +194,8 @@ const Report = () => {
                             closeMenuOnSelect={false}
                             components={animatedComponents}
                             isMulti
-                            options={tags}
-                            onChange={setSelectedOption}
+                            options={tagOptions}
+                            onChange={setTags}
                             styles={tagStyles}
                             placeholder="Tags"
                         />
@@ -173,7 +245,13 @@ const Report = () => {
                     </FormControl>
                 </Box>
             </Box>
-            <Button variantColor="primary" mt="20px">
+            <Button
+                variantColor="primary"
+                mt="20px"
+                onClick={() => {
+                    submit();
+                }}
+            >
                 Submit
             </Button>
         </Box>
