@@ -1,4 +1,4 @@
-name: Lighthouse CI for Netlify sites
+name: Lighthouse CI
 on: pull_request
 jobs:
     build:
