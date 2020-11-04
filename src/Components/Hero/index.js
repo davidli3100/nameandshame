@@ -19,7 +19,7 @@ const Hero = () => (
                 paddingRight="5vw"
                 color="blue.900"
             >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                Browse, report, and view companies
             </Heading>
         </Box>
         <Box>

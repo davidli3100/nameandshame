@@ -137,7 +137,7 @@ const Index = () => (
                     <Box display="flex" flexDirection="column">
                         <Box
                             display="grid"
-                            gridTemplateColumns="repeat(auto-fit, 320px)"
+                            gridTemplateColumns={["1fr", null, "1fr 1fr", null]}
                             gridColumnGap="40px"
                             gridRowGap="40px"
                             maxWidth="100%"
@@ -145,7 +145,7 @@ const Index = () => (
                         >
                             <EmployerHits />
                         </Box>
-                        <Box marginTop="auto">
+                        <Box marginTop="32px">
                             <Pagination showFirst={false} />
                         </Box>
                     </Box>
