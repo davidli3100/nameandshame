@@ -45,6 +45,9 @@ function App() {
                         <Route exact path="/report">
                             <Report />
                         </Route>
+                        <Route path="/report/:id">
+                            <Report />
+                        </Route>
                     </Switch>
                 </Router>
             </ThemeProvider>
