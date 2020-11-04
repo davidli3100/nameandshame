@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CreatableSelect from "react-select/creatable";
 import { connectAutoComplete } from "react-instantsearch-dom";
 import { useHistory } from "react-router-dom";
