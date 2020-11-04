@@ -7,7 +7,7 @@ import {
     AccordionPanel,
 } from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
-import * as firebase from "firebase";
+import firebase from "firebase";
 import "firebase/firestore";
 import { useParams } from "react-router-dom";
 import Banner from "../Components/Employers/Banner";
@@ -67,8 +67,11 @@ const FilterPanel = () => (
 
 const Company = () => {
     const { id } = useParams();
+
+    // React hook to handle the employerData state
     const [employerData, setEmployerData] = useState({});
 
+    // runs the function defined in the first parameter whenever the dependency array values are mutated
     useEffect(() => {
         /**
          * Fetches firebase data
