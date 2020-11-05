@@ -12,6 +12,7 @@ import About from "./Pages/about";
 import Report from "./Pages/report";
 import Careers from "./Pages/careers";
 import SEO from "./Components/SEO";
+import AddEmployer from "./Pages/addEmployer";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDJHKDopfdDhZllZzDIS9XStEuZXbN8B0o",
@@ -51,6 +52,9 @@ function App() {
                         </Route>
                         <Route path="/report/:id">
                             <Report />
+                        </Route>
+                        <Route path="/add/employer">
+                            <AddEmployer />
                         </Route>
                     </Switch>
                 </Router>
