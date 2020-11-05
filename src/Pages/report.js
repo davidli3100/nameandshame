@@ -34,7 +34,7 @@ const tagOptions = [
     },
     {
         value: "toxic workplace",
-        label: "Toxic lWorkplace",
+        label: "Toxic Workplace",
     },
 ];
 
