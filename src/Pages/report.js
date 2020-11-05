@@ -17,10 +17,7 @@ import "../Datepicker.css";
 import Autocomplete from "../Components/Autocomplete";
 import { InstantSearch } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
-import * as firebase from "firebase";
 import { useHistory } from "react-router-dom";
-// import "firebase/firestore";
-// import "firebase/functions";
 
 const tagOptions = [
     {
