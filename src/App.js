@@ -10,6 +10,7 @@ import Index from "./Pages";
 import Employer from "./Pages/employer";
 import About from "./Pages/about";
 import Report from "./Pages/report";
+import Careers from "./Pages/careers";
 import SEO from "./Components/SEO";
 
 const firebaseConfig = {
@@ -44,6 +45,9 @@ function App() {
                         </Route>
                         <Route exact path="/report">
                             <Report />
+                        </Route>
+                        <Route exact path="/careers">
+                            <Careers />
                         </Route>
                         <Route path="/report/:id">
                             <Report />
