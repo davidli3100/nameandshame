@@ -73,6 +73,7 @@ const Navbar = () => {
                         variantColor="primary"
                         borderRadius="6px"
                         px="16px"
+                        aria-label="Report"
                     >
                         Submit a Report
                     </Button>

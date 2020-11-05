@@ -37,6 +37,7 @@ const CompanyCard = (props) => {
                 width="75px"
                 borderRadius="8px"
                 src={imageURL}
+                alt={name}
             />
             <Text
                 pt="12px"
@@ -85,6 +86,7 @@ const CompanyCard = (props) => {
                     width="calc(50% - 8px)"
                     mr="16px"
                     borderRadius="6px"
+                    aria-label="Report"
                 >
                     Report
                 </Button>
@@ -94,6 +96,7 @@ const CompanyCard = (props) => {
                     color="blueGray.600"
                     width="calc(50% - 8px)"
                     borderRadius="6px"
+                    aria-label="View"
                 >
                     View
                 </Button>
