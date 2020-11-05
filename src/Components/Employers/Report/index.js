@@ -32,6 +32,7 @@ const Report = ({ hit }) => {
                 px="28px"
                 py="24px"
                 maxWidth="600px"
+                height="200px"
                 overflow="hidden"
                 borderRadius="8px"
                 transition="transform .5s"
@@ -51,7 +52,7 @@ const Report = ({ hit }) => {
                     ))}
                 </Box>
                 <Box mt="20px" textAlign="justify">
-                    <Dotdotdot clamp={4}>
+                    <Dotdotdot clamp={2}>
                         <Text lineHeight="20px" color="blueGray.400">
                             {description}
                         </Text>

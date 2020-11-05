@@ -28,6 +28,14 @@ const tagOptions = [
         value: "sexism",
         label: "Sexism",
     },
+    {
+        value: "discrimination",
+        label: "Discrimination",
+    },
+    {
+        value: "toxic workplace",
+        label: "Toxic lWorkplace",
+    },
 ];
 
 const tagStyles = {
