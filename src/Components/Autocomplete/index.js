@@ -1,16 +1,10 @@
 import React from "react";
-import CreatableSelect from "react-select/creatable";
+import Select from "react-select";
 import { connectAutoComplete } from "react-instantsearch-dom";
-import { useHistory } from "react-router-dom";
 
 const EmployerAutocomplete = ({ hits, refine, selectStyles, setState }) => {
-    const history = useHistory();
-
-    const handleCreate = (value) => {
-        history.push(`/add/employer/${value}`);
-    };
     return (
-        <CreatableSelect
+        <Select
             className="basic-single"
             classNamePrefix="select"
             isSearchable
@@ -22,7 +16,6 @@ const EmployerAutocomplete = ({ hits, refine, selectStyles, setState }) => {
                 value: hit.objectID,
             }))}
             styles={selectStyles}
-            onCreateOption={handleCreate}
         />
     );
 };

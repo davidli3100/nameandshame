@@ -105,9 +105,8 @@ const Company = () => {
                 />
                 <InstantSearch indexName="Reports" searchClient={searchClient}>
                     <Box
-                        margin="auto"
                         mt={["56px", null, "80px"]}
-                        width="fit-content"
+                        width="100%"
                         minWidth={["280px", null, "400px"]}
                         px={["40px", null, "80px"]}
                     >
@@ -145,10 +144,11 @@ const Company = () => {
                         <Box
                             display="grid"
                             my={["32px", null, "50px"]}
-                            gridTemplateColumns="repeat(auto-fit, minmax(200px, 600px))"
+                            gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
                             gridColumnGap="40px"
                             gridRowGap={5}
                             maxWidth="100%"
+                            width="100%"
                             justifyContent="center"
                         >
                             <EmployerHits />
