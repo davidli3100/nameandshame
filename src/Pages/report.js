@@ -133,6 +133,17 @@ const Report = () => {
             .then((response) => response.text())
             .then((result) => {
                 setIsSubmitting(false);
+                if (result === "isProfane") {
+                    toast({
+                        title: "Profanity detected",
+                        description:
+                            "Please do not use profanity in your report",
+                        status: "error",
+                        duration: 5000,
+                        isClosable: true,
+                    });
+                    return;
+                }
                 setTimeout(() => {
                     history.push(`/employer/${employer.value}`);
                 }, 2000);
@@ -142,7 +153,6 @@ const Report = () => {
                     duration: 5000,
                     isClosable: true,
                 });
-                console.log(result);
             })
             .catch((error) => {
                 setIsSubmitting(false);
