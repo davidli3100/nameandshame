@@ -95,7 +95,12 @@ const Report = ({ hit }) => {
                         >
                             {dateString}
                         </Heading>
-                        <Box mt="20px" display="flex" flexDirection="row">
+                        <Box
+                            mt="20px"
+                            display="flex"
+                            flexDirection="row"
+                            flexWrap="wrap"
+                        >
                             {categories.map((category) => (
                                 <Tag name={category} />
                             ))}
