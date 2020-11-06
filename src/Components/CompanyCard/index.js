@@ -32,7 +32,7 @@ const CompanyCard = (props) => {
             height="fit-content"
         >
             <Image
-                objectFit="cover"
+                objectFit="contain"
                 height="75px"
                 width="75px"
                 borderRadius="8px"

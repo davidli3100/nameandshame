@@ -9,7 +9,7 @@ const Stats = ({ logo, name, employees, reports, trend, mcr }) => (
         mt="-50px"
         px="5vw"
     >
-        <Image src={logo} size="100px" rounded="md" />
+        <Image src={logo} size="100px" rounded="md" objectFit="contain" />
         <Heading color="black" size="lg" fontWeight="600" mt="30px">
             {name}
         </Heading>
