@@ -21,6 +21,7 @@ import {
     Input,
     useToast,
 } from "@chakra-ui/core";
+import { isMobile } from "../Components/MediaQueries";
 import React, { useEffect, useState } from "react";
 import firebase from "firebase";
 import "firebase/firestore";
@@ -192,7 +193,7 @@ const Company = () => {
                     >
                         <Box
                             display="flex"
-                            flexDir="row"
+                            flexDir={isMobile() ? "column" : "row"}
                             justifyContent="space-between"
                         >
                             <Text
@@ -201,7 +202,7 @@ const Company = () => {
                                 fontWeight="bold"
                                 maxW="320px"
                                 margin={[null, null, "0"]}
-                                mb="32px"
+                                mb={isMobile() ? "12px" : "32px"}
                             >
                                 Browse Reports
                             </Text>
@@ -269,7 +270,11 @@ const Company = () => {
                                         </ModalFooter>
                                     </ModalContent>
                                 </Modal>
-                                <Button variant="ghost" onClick={onOpen}>
+                                <Button
+                                    variant="outline"
+                                    onClick={onOpen}
+                                    mb={isMobile() ? "12px" : "0px"}
+                                >
                                     Subscribe
                                 </Button>
                             </>
