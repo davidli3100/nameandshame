@@ -239,6 +239,9 @@ const Report = () => {
                             <DayPickerInput
                                 value={date}
                                 onDayChange={(day) => setDate(day)}
+                                component={(props) => (
+                                    <input {...props} readOnly />
+                                )}
                             />
                         </Box>
                         <FormHelperText id="date-helper">
