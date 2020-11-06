@@ -31,7 +31,7 @@ const Report = ({ hit }) => {
                 border="1px solid #F0F4F8"
                 px="28px"
                 py="24px"
-                height="200px"
+                height="250px"
                 borderRadius="8px"
                 transition="transform .5s"
                 _hover={{ transform: "scale(1.025)" }}
@@ -65,7 +65,7 @@ const Report = ({ hit }) => {
                     flexGrow="1"
                     overflow="hidden"
                 >
-                    <Dotdotdot clamp={2}>
+                    <Dotdotdot clamp={4}>
                         <Text lineHeight="20px" color="blueGray.400">
                             {description}
                         </Text>
