@@ -1,10 +1,25 @@
 import {
     Box,
     Text,
+    Heading,
     AccordionHeader,
     AccordionIcon,
     AccordionItem,
     AccordionPanel,
+    Button,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    FormControl,
+    FormLabel,
+    FormHelperText,
+    Input,
+    useToast,
 } from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
 import firebase from "firebase";
@@ -91,6 +106,71 @@ const Company = () => {
         fetchFirebaseData();
     }, [id]);
 
+    //Email validator
+    const validator = require("email-validator");
+
+    // Subscribe to updates
+    const [email, setEmail] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const initialRef = React.useRef();
+    const toast = useToast();
+    const subscribe = () => {
+        setIsSubmitting(true);
+        if (!validator.validate(email)) {
+            toast({
+                title: "Invalid Email",
+                description: "You must input a valid email!",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+            });
+            setIsSubmitting(false);
+            return;
+        }
+        var requestHeaders = new Headers();
+        requestHeaders.append("Content-Type", "application/json");
+
+        var rawData = JSON.stringify({
+            employer: id,
+            email: email,
+        });
+
+        var requestOptions = {
+            method: "POST",
+            headers: requestHeaders,
+            body: rawData,
+            redirect: "follow",
+        };
+        fetch(
+            "https://us-central1-nameandshame-eedd0.cloudfunctions.net/addSubscriber",
+            requestOptions
+        )
+            .then((response) => response.text())
+            .then((result) => {
+                setIsSubmitting(false);
+                toast({
+                    title: "Subscription successful",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                });
+                console.log(result);
+                setEmail("");
+            })
+            .catch((error) => {
+                setIsSubmitting(false);
+                toast({
+                    title: "Error subscribing",
+                    description: "Please try again",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                });
+                console.log("error", error);
+            });
+    };
+
     return (
         <>
             <Box display="flex" flexDirection="column" justifyContent="center">
@@ -110,16 +190,90 @@ const Company = () => {
                         minWidth={["280px", null, "400px"]}
                         px={["40px", null, "80px"]}
                     >
-                        <Text
-                            fontSize="32px"
-                            color="blueGray.900"
-                            fontWeight="bold"
-                            maxW="320px"
-                            margin={[null, null, "0"]}
-                            mb="32px"
+                        <Box
+                            display="flex"
+                            flexDir="row"
+                            justifyContent="space-between"
                         >
-                            Browse Reports
-                        </Text>
+                            <Text
+                                fontSize="32px"
+                                color="blueGray.900"
+                                fontWeight="bold"
+                                maxW="320px"
+                                margin={[null, null, "0"]}
+                                mb="32px"
+                            >
+                                Browse Reports
+                            </Text>
+                            <>
+                                <Modal
+                                    isOpen={isOpen}
+                                    onClose={onClose}
+                                    initialFocusRef={initialRef}
+                                >
+                                    <ModalOverlay />
+                                    <ModalContent
+                                        borderRadius="8px"
+                                        border="1px solid #F0F4F8"
+                                        maxWidth="800px"
+                                        p="12px"
+                                    >
+                                        <ModalHeader width="80%">
+                                            <Heading
+                                                size="md"
+                                                fontWeight="600"
+                                                color="blueGray.900"
+                                            >
+                                                Subscribe to updates from{" "}
+                                                {employerData.name}
+                                            </Heading>
+                                        </ModalHeader>
+                                        <ModalCloseButton />
+                                        <ModalBody>
+                                            <FormControl>
+                                                <FormLabel htmlFor="email">
+                                                    Email Address
+                                                </FormLabel>
+                                                <Input
+                                                    ref={initialRef}
+                                                    placeholder="someone@example.com"
+                                                    type="email"
+                                                    id="email"
+                                                    aria-describedby="email-helper-text"
+                                                    value={email}
+                                                    isInvalid={
+                                                        !validator.validate(
+                                                            email
+                                                        )
+                                                    }
+                                                    onChange={(e) =>
+                                                        setEmail(e.target.value)
+                                                    }
+                                                />
+                                                <FormHelperText id="email-helper-text">
+                                                    We'll never share your
+                                                    email.
+                                                </FormHelperText>
+                                            </FormControl>
+                                        </ModalBody>
+                                        <ModalFooter>
+                                            <Button
+                                                variantColor="primary"
+                                                onClick={() => {
+                                                    subscribe();
+                                                }}
+                                                isLoading={isSubmitting}
+                                            >
+                                                Subscribe
+                                            </Button>
+                                        </ModalFooter>
+                                    </ModalContent>
+                                </Modal>
+                                <Button variant="ghost" onClick={onOpen}>
+                                    Subscribe
+                                </Button>
+                            </>
+                        </Box>
                         <VirtualRefinementList
                             attribute="employerRef"
                             defaultRefinement={id}
