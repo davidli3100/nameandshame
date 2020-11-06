@@ -85,7 +85,7 @@ const Report = () => {
      * but we probably don't have the time to set up formik
      * or a similar form management library
      */
-    const [tags, setTags] = useState(null);
+    const [tags, setTags] = useState([]);
     const [employer, setEmployer] = useState();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
