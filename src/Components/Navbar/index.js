@@ -65,6 +65,7 @@ const Navbar = () => {
                         <NavItem title="Browse" path="/" />
                         <NavItem title="About" path="/about" />
                         <NavItem title="Careers" path="/careers" />
+                        <NavItem title="Add Employer" path="/add/employer" />
                     </Box>
                     <Button
                         as={Link}
@@ -125,6 +126,10 @@ const Navbar = () => {
                                 <NavItem title="Browse" path="/" />
                                 <NavItem title="About" path="/about" />
                                 <NavItem title="Careers" path="/careers" />
+                                <NavItem
+                                    title="Add Employer"
+                                    path="/add/employer"
+                                />
                                 <NavItem
                                     title="Submit a Report"
                                     path="/report"
