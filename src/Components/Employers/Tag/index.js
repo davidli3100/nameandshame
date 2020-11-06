@@ -8,8 +8,9 @@ const Tag = ({ name }) => (
         textAlign="center"
         px="10px"
         py="6px"
-        display="inline-block"
         mr="10px"
+        my="4px"
+        display="inline-block"
         textTransform="capitalize"
     >
         <Heading fontSize="14px" fontWeight="600" color="blue.700">

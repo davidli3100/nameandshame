@@ -144,7 +144,7 @@ const Company = () => {
                         <Box
                             display="grid"
                             my={["32px", null, "50px"]}
-                            gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
+                            gridTemplateColumns={["1fr", null, "1fr 1fr", null]}
                             gridColumnGap="40px"
                             gridRowGap={5}
                             maxWidth="100%"

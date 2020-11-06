@@ -31,27 +31,40 @@ const Report = ({ hit }) => {
                 border="1px solid #F0F4F8"
                 px="28px"
                 py="24px"
-                maxWidth="600px"
                 height="200px"
-                overflow="hidden"
                 borderRadius="8px"
                 transition="transform .5s"
                 _hover={{ transform: "scale(1.025)" }}
                 onClick={onOpen}
                 cursor="pointer"
+                display="flex"
+                flexDir="column"
+                flexFlow="column"
             >
-                <Heading size="md" fontWeight="600" color="blueGray.900">
-                    {title}
-                </Heading>
-                <Heading size="sm" color="blueGray.400" fontWeight="600">
-                    {dateString}
-                </Heading>
-                <Box mt="20px" display="flex" flexDirection="row">
-                    {categories.map((category) => (
-                        <Tag name={category} />
-                    ))}
+                <Box>
+                    <Heading size="md" fontWeight="600" color="blueGray.900">
+                        {title}
+                    </Heading>
+                    <Heading size="sm" color="blueGray.400" fontWeight="600">
+                        {dateString}
+                    </Heading>
+                    <Box
+                        mt="16px"
+                        display="flex"
+                        flexDirection="row"
+                        flexWrap="wrap"
+                    >
+                        {categories.map((category) => (
+                            <Tag name={category} />
+                        ))}
+                    </Box>
                 </Box>
-                <Box mt="20px" textAlign="justify">
+                <Box
+                    mt="20px"
+                    textAlign="justify"
+                    flexGrow="1"
+                    overflow="hidden"
+                >
                     <Dotdotdot clamp={2}>
                         <Text lineHeight="20px" color="blueGray.400">
                             {description}
