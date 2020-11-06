@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Heading, Image } from "@chakra-ui/core";
 
-const Stats = ({ logo, name, employees, reports, RE, trend, mcr }) => (
+const Stats = ({ logo, name, employees, reports, trend, mcr }) => (
     <Box
         display="flex"
         flexDirection="column"

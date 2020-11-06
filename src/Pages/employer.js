@@ -100,7 +100,7 @@ const Company = () => {
                     name={employerData.name}
                     employees={employerData.numEmployees}
                     reports={employerData.numReports}
-                    trend={84}
+                    trend="-"
                     mcr="Racism"
                 />
                 <InstantSearch indexName="Reports" searchClient={searchClient}>
